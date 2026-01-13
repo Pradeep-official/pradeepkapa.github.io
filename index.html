@@ -4,144 +4,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pradeep Kapa | Senior Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Aarushi's Core Aesthetic: Clean, Minimal, White Background */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #333; line-height: 1.6; }
-
-        /* Two-Column Grid */
-        .page-wrapper {
-            display: flex;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            gap: 60px;
+        /* Exact Background and Font Colors from the vCard/Aarushi style */
+        body { 
+            background-color: #121212; 
+            color: #d6d6d6; 
+            font-family: 'Inter', sans-serif; 
         }
-
-        /* Sidebar - Fixed on Left */
-        .sidebar {
-            width: 280px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 60px;
-            height: fit-content;
-        }
-
-        .profile-pic {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            background: #f0f0f0; /* Placeholder if no image */
-        }
-
-        .sidebar h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 5px; }
-        .sidebar p { font-size: 0.95rem; color: #666; margin-bottom: 20px; }
-
-        .nav-links { list-style: none; margin-bottom: 30px; }
-        .nav-links li { margin-bottom: 8px; }
-        .nav-links a { text-decoration: none; color: #0077cc; font-weight: 500; }
-        .nav-links a:hover { text-decoration: underline; }
-
-        .contact-info { font-size: 0.85rem; color: #555; border-top: 1px solid #eee; pt: 20px; }
-        .contact-info div { margin-top: 10px; display: flex; align-items: center; gap: 8px; }
-
-        /* Main Content - Scrolling on Right */
-        .main-content { flex-grow: 1; }
         
-        h2 { 
-            font-size: 1.6rem; 
-            font-weight: 700; 
-            margin: 40px 0 20px; 
-            padding-bottom: 10px; 
-            border-bottom: 1px solid #eee;
+        /* The main container that splits Sidebar and Content */
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        h2:first-child { margin-top: 0; }
 
-        p { margin-bottom: 1.5rem; color: #444; font-size: 1.05rem; }
+        @media (min-width: 1024px) {
+            .page-container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
 
-        /* Aarushi's Experience/Publication List Style */
-        .item-row { margin-bottom: 25px; }
-        .item-title { font-weight: 600; color: #111; display: block; }
-        .item-meta { font-size: 0.9rem; color: #666; font-style: italic; }
-        .item-desc { font-size: 0.95rem; margin-top: 5px; color: #555; }
+        /* Sidebar - Fixed/Sticky on the left */
+        .sidebar {
+            background: #1e1e1f;
+            border: 1px solid #383838;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+        }
 
-        /* Responsive */
-        @media (max-width: 850px) {
-            .page-wrapper { flex-direction: column; padding: 40px 20px; }
-            .sidebar { width: 100%; position: static; text-align: center; }
-            .sidebar .profile-pic { width: 150px; margin: 0 auto 20px; }
+        @media (min-width: 1024px) {
+            .sidebar {
+                width: 300px;
+                position: sticky;
+                top: 40px;
+            }
+        }
+
+        .avatar-box {
+            background: #383838;
+            border-radius: 20px;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content Area on the right */
+        .main-content {
+            background: #1e1e1f;
+            border: 1px solid #383838;
+            border-radius: 20px;
+            padding: 30px;
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fafafa;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 5px;
+            background: #ffdb70;
+            border-radius: 3px;
+        }
+
+        /* Lists and Experience items */
+        .item-card {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 1px solid #383838;
+            position: relative;
+        }
+
+        .item-card::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: -6px;
+            width: 11px;
+            height: 11px;
+            background: #ffdb70;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #1e1e1f;
+        }
+
+        .item-title { color: #fafafa; font-weight: 600; }
+        .item-date { color: #ffdb70; font-size: 14px; font-weight: 400; }
+        .contact-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            margin-bottom: 20px; 
+            text-align: left; 
+            font-size: 13px;
+        }
+        .icon-box {
+            background: #2b2b2c;
+            color: #ffdb70;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 1px solid #383838;
         }
     </style>
 </head>
 <body>
 
-    <div class="page-wrapper">
+    <div class="page-container">
+        
         <aside class="sidebar">
-            <img src="https://ui-avatars.com/api/?name=Pradeep+Kapa&size=300&background=f3f4f6&color=374151" alt="Pradeep Kapa" class="profile-pic">
-            <h1>Pradeep Kapa</h1>
-            <p>Senior Software Engineer<br>Cloud & AI/ML</p>
-            
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-            </ul>
+            <div class="avatar-box">
+                <i class="fas fa-user-gear text-5xl text-[#ffdb70]"></i>
+            </div>
+            <h1 class="text-xl font-bold text-white mb-2">Pradeep Kapa</h1>
+            <p class="bg-[#2b2b2c] text-[11px] inline-block px-3 py-1 rounded-md mb-6 uppercase tracking-wider">Sr. Software Engineer</p>
 
-            <div class="contact-info">
-                <div>📧 pradeep.kapa@yahoo.com</div>
-                <div>📞 +1 (813) 863-1523</div>
-                <div>🔗 <a href="https://linkedin.com/in/pradeepkapa">LinkedIn Profile</a></div>
+            <div class="border-t border-[#383838] pt-6">
+                <div class="contact-item">
+                    <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                    <div><p class="text-gray-500 uppercase text-[10px]">Email</p>pradeep.kapa@yahoo.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon-box"><i class="fas fa-phone"></i></div>
+                    <div><p class="text-gray-500 uppercase text-[10px]">Phone</p>+1 (813) 863-1523</div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon-box"><i class="fab fa-linkedin"></i></div>
+                    <div><p class="text-gray-500 uppercase text-[10px]">LinkedIn</p><a href="https://linkedin.com/in/pradeepkapa" class="hover:text-[#ffdb70]">/in/pradeepkapa</a></div>
+                </div>
             </div>
         </aside>
 
         <main class="main-content">
             
-            <section id="about">
-                <h2>About Me</h2>
-                <p>Hi Everyone! I am <strong>Pradeep Kapa</strong>, a seasoned Senior Software Engineer specializing in Cloud, DevOps, SRE, and AI/ML.</p>
-                <p>Drawing on hands-on experience designing and operating cloud-native platforms, I work across the full lifecycle—from architecture and MLOps to observability and incident response.</p>
+            <section class="mb-12">
+                <h2 class="section-title">About Me</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    I am a Senior Software Engineer specializing in Cloud, DevOps, SRE, and AI/ML. 
+                    I focus on building scalable, reliable, and secure systems in production, 
+                    working across the full lifecycle from architecture to incident response.
+                </p>
             </section>
 
-            <section id="experience">
-                <h2>Experience</h2>
+            <section class="mb-12">
+                <h2 class="section-title">Experience</h2>
                 
-                <div class="item-row">
-                    <span class="item-title">Senior Software Engineer – Cloud & AI/ML</span>
-                    <span class="item-meta">Nymbus | Oct 2024 - Present</span>
-                    <div class="item-desc">Focusing on building scalable, reliable, and intelligent systems in production environments.</div>
+                <div class="item-card">
+                    <h3 class="item-title">Senior Software Engineer – Cloud & AI/ML</h3>
+                    <p class="item-date">Nymbus | Oct 2024 — Present</p>
+                    <p class="text-sm text-gray-500 mt-2">Leading cloud transformations and AI integration for banking platforms.</p>
                 </div>
 
-                <div class="item-row">
-                    <span class="item-title">Senior Software Engineer - Cloud</span>
-                    <span class="item-meta">Nielsen</span>
+                <div class="item-card">
+                    <h3 class="item-title">Senior Software Engineer - Cloud</h3>
+                    <p class="item-date">Nielsen | Prior Experience</p>
                 </div>
 
-                <div class="item-row">
-                    <span class="item-title">Cloud/DevOps Engineer</span>
-                    <span class="item-meta">AIG | Apr 2019 - Dec 2019</span>
-                </div>
-            </section>
-
-            <section id="certifications">
-                <h2>Certifications</h2>
-                
-                <div class="item-row">
-                    <span class="item-title">AWS Certified Solutions Architect – Professional</span>
-                    <span class="item-meta">Issued Jun 2024 · Expires Jun 2027</span>
-                </div>
-
-                <div class="item-row">
-                    <span class="item-title">HashiCorp Certified: Terraform Associate</span>
-                    <span class="item-meta">Issued Jun 2024 · Expires Jun 2026</span>
+                <div class="item-card">
+                    <h3 class="item-title">Cloud/DevOps Engineer</h3>
+                    <p class="item-date">AIG | 2019</p>
                 </div>
             </section>
 
-            <section id="education">
-                <h2>Education</h2>
-                <div class="item-row">
-                    <span class="item-title">Master of Science</span>
-                    <span class="item-meta">Frostburg State University</span>
+            <section class="mb-12">
+                <h2 class="section-title">Certifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
+                        <p class="text-[#ffdb70] text-xs font-bold uppercase">AWS Professional</p>
+                        <h4 class="text-sm font-bold text-white">Solutions Architect</h4>
+                    </div>
+                    <div class="bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
+                        <p class="text-[#ffdb70] text-xs font-bold uppercase">HashiCorp</p>
+                        <h4 class="text-sm font-bold text-white">Terraform Associate</h4>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">What I Do</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-[#ffdb70] font-bold mb-2">Cloud Engineering</h4>
+                        <p class="text-xs text-gray-500">Designing secure cloud-native infrastructure at enterprise scale.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-[#ffdb70] font-bold mb-2">DevOps Automation</h4>
+                        <p class="text-xs text-gray-500">CI/CD pipelines and IaC with Terraform and Kubernetes.</p>
+                    </div>
                 </div>
             </section>
 
