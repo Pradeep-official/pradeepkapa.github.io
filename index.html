@@ -59,7 +59,7 @@
         .nav-btn:hover, .nav-btn.active { color: #ffdb70; }
 
         /* Content Areas */
-        .main-content { flex: 1; position: relative; min-height: 800px; padding-top: 60px; }
+        .main-content { flex: 1; position: relative; min-height: 800px; padding-top: 80px; }
         .content-section { display: none; }
         .content-section.active { display: block; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -71,7 +71,7 @@
         .timeline-item { margin-bottom: 25px; padding-left: 20px; border-left: 1px solid #383838; position: relative; }
         .timeline-item::before { content: ""; position: absolute; top: 5px; left: -6px; width: 11px; height: 11px; background: #ffdb70; border-radius: 50%; box-shadow: 0 0 0 4px #1e1e1f; }
         
-        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 15px; padding: 20px; transition: 0.3s; }
+        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 15px; padding: 20px; transition: 0.3s; height: 100%; }
         
         .download-btn {
             display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -79,6 +79,10 @@
             padding: 12px; border-radius: 12px; font-weight: 700; margin-top: 25px; transition: 0.3s;
         }
         .download-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* Logo Management */
+        .company-logo { max-height: 35px; width: auto; filter: grayscale(1) invert(0.8); transition: 0.3s; }
+        .company-logo:hover { filter: grayscale(0) invert(0); }
 
         /* Marquee Animation */
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -103,7 +107,7 @@
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span class="text-[10px] text-gray-400 uppercase tracking-tighter">Available for Consulting</span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-tighter text-center">Available for Consulting</span>
             </div>
 
             <div class="border-t border-[#383838] pt-6 space-y-4 text-left text-xs">
@@ -123,7 +127,6 @@
                 <span class="nav-btn active" onclick="showTab('about')">About</span>
                 <span class="nav-btn" onclick="showTab('resume')">Resume</span>
                 <span class="nav-btn" onclick="showTab('projects')">Projects</span>
-                <span class="nav-btn" onclick="showTab('blog')">Blog</span>
                 <span class="nav-btn" onclick="showTab('contact')">Contact</span>
             </nav>
 
@@ -139,26 +142,45 @@
 
                 <h3 class="text-xl font-bold text-white mb-6">What I Do?</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-                    <div class="card-box"><h4 class="text-[#ffdb70] font-bold">Cloud Engineering</h4><p class="text-xs text-gray-500">AWS/Azure architecture at scale.</p></div>
-                    <div class="card-box"><h4 class="text-[#ffdb70] font-bold">DevOps Automation</h4><p class="text-xs text-gray-500">CI/CD, Terraform, and K8s.</p></div>
-                    <div class="card-box"><h4 class="text-[#ffdb70] font-bold">SRE & Observability</h4><p class="text-xs text-gray-500">Maintaining 99.99% system uptime.</p></div>
-                    <div class="card-box"><h4 class="text-[#ffdb70] font-bold">AI/ML Operations</h4><p class="text-xs text-gray-500">Deploying production ML models.</p></div>
-                </div>
-
-                <h3 class="text-xl font-bold text-white mb-6">Testimonials</h3>
-                <div class="card-box italic text-sm text-gray-400 border-l-4 border-l-[#ffdb70] mb-12">
-                    "Pradeep consistently delivers robust cloud solutions and has a deep understanding of MLOps."
+                    <div class="card-box">
+                        <i class="fas fa-cloud text-[#ffdb70] text-2xl mb-3"></i>
+                        <h4 class="text-white font-bold">Cloud Engineering</h4>
+                        <p class="text-xs text-gray-500 mt-1">Designing high-concurrency AWS/Azure environments.</p>
+                    </div>
+                    <div class="card-box">
+                        <i class="fas fa-infinity text-[#ffdb70] text-2xl mb-3"></i>
+                        <h4 class="text-white font-bold">DevOps Automation</h4>
+                        <p class="text-xs text-gray-500 mt-1">Full CI/CD, Terraform, and K8s orchestration.</p>
+                    </div>
                 </div>
 
                 <h3 class="text-xl font-bold text-white mb-6">Companies I've Worked With</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-50 grayscale hover:grayscale-0 transition-all">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Nielsen_logo_2021.svg" alt="Nielsen" class="h-6">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/AIG_logo.svg" alt="AIG" class="h-6">
-                    <div class="text-lg font-black text-white">TRACE<span class="text-[#ffdb70]">3</span></div>
-                    <div class="text-lg font-light text-white uppercase tracking-widest">Nymbus</div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center mb-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Nielsen_logo_2021.svg" alt="Nielsen" class="company-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/AIG_logo.svg" alt="AIG" class="company-logo">
+                    <div class="text-lg font-light text-white tracking-[0.2em] opacity-50 hover:opacity-100 transition">NYMBUS</div>
+                    <div class="text-lg font-black text-white opacity-50 hover:opacity-100 transition">TRACE<span class="text-[#ffdb70]">3</span></div>
                 </div>
 
-                <h3 class="text-xl font-bold text-white mb-6 mt-12">Tools & Tech</h3>
+                <h3 class="text-xl font-bold text-white mb-6">Certifications</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                    <div class="flex items-center gap-4 bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
+                        <i class="fab fa-aws text-3xl text-[#ffdb70]"></i>
+                        <div>
+                            <p class="text-white font-bold text-sm">AWS Solutions Architect</p>
+                            <p class="text-gray-500 text-[10px] uppercase">Professional</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
+                        <i class="fas fa-shield-halved text-3xl text-[#ffdb70]"></i>
+                        <div>
+                            <p class="text-white font-bold text-sm">HashiCorp Terraform</p>
+                            <p class="text-gray-500 text-[10px] uppercase">Associate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mb-6">Tools & Tech Stack</h3>
                 <div class="marquee-container rounded-xl">
                     <div class="marquee-content">
                         <div class="tech-item"><i class="fab fa-aws"></i> AWS</div>
@@ -179,57 +201,56 @@
 
             <section id="resume" class="content-section">
                 <h2 class="section-title">Resume</h2>
-                <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-briefcase text-[#ffdb70] mr-2"></i> Experience</h3>
-                <div class="timeline-item">
-                    <h4 class="text-white font-bold">Senior Software Engineer – Cloud & AI/ML</h4>
-                    <p class="text-[#ffdb70] text-sm">Nymbus | Oct 2024 — Present</p>
-                </div>
-                <div class="timeline-item"><h4 class="text-white font-bold">Senior Software Engineer</h4><p class="text-gray-400 text-sm">Nielsen</p></div>
-                <div class="timeline-item"><h4 class="text-white font-bold">Cloud/DevOps Engineer</h4><p class="text-gray-400 text-sm">AIG</p></div>
-                <div class="timeline-item"><h4 class="text-white font-bold">Cloud Engineer</h4><p class="text-gray-400 text-sm">Trace3</p></div>
-                
-                <h3 class="text-lg font-bold mt-10 mb-6 text-white"><i class="fas fa-graduation-cap text-[#ffdb70] mr-2"></i> Education</h3>
-                <div class="timeline-item">
-                    <h4 class="text-white font-bold">Master of Science</h4>
-                    <p class="text-[#ffdb70] text-sm">Frostburg State University</p>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-briefcase text-[#ffdb70] mr-2"></i> Experience</h3>
+                        <div class="timeline-item">
+                            <h4 class="text-white font-bold">Senior Software Engineer – Cloud & AI/ML</h4>
+                            <p class="text-[#ffdb70] text-sm">Nymbus | Oct 2024 — Present</p>
+                        </div>
+                        <div class="timeline-item"><h4 class="text-white font-bold">Senior Software Engineer</h4><p class="text-gray-400 text-sm">Nielsen</p></div>
+                        <div class="timeline-item"><h4 class="text-white font-bold">Cloud/DevOps Engineer</h4><p class="text-gray-400 text-sm">AIG</p></div>
+                        <div class="timeline-item"><h4 class="text-white font-bold">Cloud Engineer</h4><p class="text-gray-400 text-sm">Trace3</p></div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-graduation-cap text-[#ffdb70] mr-2"></i> Education</h3>
+                        <div class="timeline-item">
+                            <h4 class="text-white font-bold">Master of Science in Computer Science</h4>
+                            <p class="text-[#ffdb70] text-sm">Frostburg State University</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <section id="projects" class="content-section">
                 <h2 class="section-title">Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="card-box hover:border-[#ffdb70]">
+                    <div class="card-box hover:border-[#ffdb70] transition border border-transparent">
                         <h4 class="font-bold text-white mb-2">MLOps Pipeline</h4>
-                        <p class="text-xs text-gray-400 mb-4">Automated training and deployment pipeline for financial models.</p>
+                        <p class="text-xs text-gray-400 mb-4">Automated training and deployment pipeline for financial models using Kubeflow.</p>
                         <span class="text-[10px] bg-[#383838] px-2 py-1 rounded text-[#ffdb70]">Kubeflow</span>
                     </div>
-                    <div class="card-box hover:border-[#ffdb70]">
+                    <div class="card-box hover:border-[#ffdb70] transition border border-transparent">
                         <h4 class="font-bold text-white mb-2">IaC Framework</h4>
-                        <p class="text-xs text-gray-400 mb-4">Global AWS infrastructure governance using Terraform.</p>
+                        <p class="text-xs text-gray-400 mb-4">Enterprise-grade AWS infrastructure governance and provisioning with Terraform.</p>
                         <span class="text-[10px] bg-[#383838] px-2 py-1 rounded text-[#ffdb70]">Terraform</span>
                     </div>
                 </div>
             </section>
 
-            <section id="blog" class="content-section">
-                <h2 class="section-title">Blog</h2>
-                <div class="card-box">
-                    <h4 class="font-bold text-white">Scaling AI/ML on Kubernetes</h4>
-                    <p class="text-xs text-[#ffdb70] mb-2">Coming Soon</p>
-                    <p class="text-sm text-gray-400">Deep dive into managing model lifecycle at scale...</p>
-                </div>
-            </section>
-
             <section id="contact" class="content-section">
                 <h2 class="section-title">Contact</h2>
-                <form action="https://formspree.io/f/your-id-here" method="POST" class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" name="name" placeholder="Name" required class="bg-[#1e1e1f] border border-[#383838] rounded-xl p-3 text-sm focus:border-[#ffdb70] outline-none">
-                        <input type="email" name="email" placeholder="Email" required class="bg-[#1e1e1f] border border-[#383838] rounded-xl p-3 text-sm focus:border-[#ffdb70] outline-none">
+                <div class="card-box">
+                    <p class="text-gray-400 mb-6">I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                    <div class="space-y-4">
+                        <a href="mailto:pradeep.kapa@yahoo.com" class="block text-white font-bold text-lg hover:text-[#ffdb70] transition">
+                            <i class="fas fa-envelope mr-3 text-[#ffdb70]"></i> pradeep.kapa@yahoo.com
+                        </a>
+                        <div class="text-white font-bold text-lg">
+                            <i class="fas fa-phone mr-3 text-[#ffdb70]"></i> +1 (813) 863-1523
+                        </div>
                     </div>
-                    <textarea name="message" rows="4" placeholder="Message" required class="w-full bg-[#1e1e1f] border border-[#383838] rounded-xl p-3 text-sm focus:border-[#ffdb70] outline-none"></textarea>
-                    <button type="submit" class="download-btn w-full md:w-max px-8">Send Message</button>
-                </form>
+                </div>
             </section>
 
         </main>
