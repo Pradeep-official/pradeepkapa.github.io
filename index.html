@@ -3,124 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pradeep Kapa | Senior Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Pradeep Kapa - Senior Software Engineer | Cloud & AI/ML</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #fff; color: #333; }
-        .sidebar { border-right: 1px solid #eee; }
-        .nav-link { color: #494e52; font-weight: 500; transition: 0.2s; }
-        .nav-link:hover { color: #000; text-decoration: underline; }
-        .section-title { border-bottom: 1px solid #eee; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.5rem; font-weight: 700; }
-        .experience-item { margin-bottom: 24px; }
-        .experience-date { color: #666; font-size: 0.9rem; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Sidebar */
+        .sidebar { 
+            position: fixed; left: 0; top: 0; width: 300px; height: 100vh; 
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); 
+            color: white; padding: 40px 30px; z-index: 1000;
+            overflow-y: auto;
+        }
+        .profile-img { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px; display: block; }
+        .name { font-size: 28px; font-weight: 700; margin-bottom: 10px; text-align: center; }
+        .title { font-size: 18px; text-align: center; opacity: 0.9; margin-bottom: 30px; }
+        .contacts { list-style: none; }
+        .contacts li { margin-bottom: 15px; }
+        .contacts a { color: white; text-decoration: none; display: flex; align-items: center; }
+        .contacts i { width: 20px; margin-right: 10px; }
+        
+        /* Main Content */
+        .main-content { margin-left: 300px; padding: 40px 0; }
+        nav { background: white; padding: 20px 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 999; }
+        nav a { margin-right: 30px; text-decoration: none; color: #333; font-weight: 500; }
+        nav a.active, nav a:hover { color: #1e3c72; border-bottom: 2px solid #1e3c72; padding-bottom: 5px; }
+        
+        section { display: none; padding: 60px 40px; }
+        section.active { display: block; }
+        h1 { font-size: 36px; margin-bottom: 20px; color: #1e3c72; }
+        h2 { font-size: 28px; margin-bottom: 30px; color: #2a5298; }
+        
+        /* About */
+        .about-text { font-size: 18px; line-height: 1.8; max-width: 900px; }
+        .recruiter-section { background: #f8f9fa; padding: 30px; border-radius: 10px; margin: 30px 0; border-left: 5px solid #1e3c72; }
+        .recruiter-section h3 { color: #1e3c72; margin-bottom: 15px; }
+        
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .service-card { text-align: center; padding: 40px 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-icon { font-size: 48px; color: #1e3c72; margin-bottom: 20px; }
+        .service-card h3 { font-size: 24px; margin-bottom: 15px; }
+        
+        /* Resume */
+        .resume-section { margin-bottom: 60px; }
+        .resume-item { margin-bottom: 40px; }
+        .resume-title { font-size: 22px; color: #1e3c72; margin-bottom: 10px; }
+        .resume-meta { color: #666; font-size: 16px; margin-bottom: 15px; }
+        .resume-bullets { list-style: none; }
+        .resume-bullets li { padding: 8px 0; padding-left: 25px; position: relative; }
+        .resume-bullets li:before { content: "▸"; color: #1e3c72; position: absolute; left: 0; }
+        
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
+        .skill-item { background: #f8f9fa; padding: 25px; border-radius: 10px; text-align: center; }
+        .skill-name { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+        .skill-bar { height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .skill-progress { height: 100%; background: linear-gradient(90deg, #1e3c72, #2a5298); transition: width 2s ease-in-out; }
+        
+        @media (max-width: 768px) {
+            .sidebar { position: relative; width: 100%; height: auto; padding: 20px; }
+            .main-content { margin-left: 0; }
+            nav a { margin-right: 15px; font-size: 14px; }
+        }
     </style>
 </head>
-<body class="bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-12">
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <img src="https://via.placeholder.com/120x120/1e3c72/ffffff?text=PK" alt="Pradeep Kapa" class="profile-img">
+        <div class="name">Pradeep Kapa</div>
+        <div class="title">Senior Software Engineer - Cloud & AI/ML</div>
         
-        <aside class="md:w-1/4">
-            <div class="sticky top-12">
-                <div class="mb-6">
-                    <div class="w-48 h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden border border-gray-200">
-                         <img src="https://ui-avatars.com/api/?name=Pradeep+Kapa&size=200&background=f3f4f6&color=374151" alt="Pradeep Kapa" class="w-full h-full object-cover">
+        <ul class="contacts">
+            <li><a href="mailto:pradeep.kapa@yahoo.com"><i class="fas fa-envelope"></i> pradeep.kapa@yahoo.com</a></li>
+            <li><a href="tel:+18138631523"><i class="fas fa-phone"></i> +1 (813) 863-1523</a></li>
+            <li><a href="https://linkedin.com/in/pradeepkapa" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/pradeepkapa</a></li>
+            <li><a href="https://github.com/pradeepkapa" target="_blank"><i class="fab fa-github"></i> github.com/pradeepkapa</a></li>
+            <li>Location: Tampa, Florida, USA</li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <nav>
+            <a href="#" class="nav-link active" data-section="about">About</a>
+            <a href="#" class="nav-link" data-section="services">What I Do</a>
+            <a href="#" class="nav-link" data-section="resume">Resume</a>
+            <a href="#" class="nav-link" data-section="portfolio">Portfolio</a>
+            <a href="#" class="nav-link" data-section="contact">Contact</a>
+        </nav>
+
+        <!-- About Section -->
+        <section id="about" class="active">
+            <div class="container">
+                <h1>About</h1>
+                
+                <div class="about-text">
+                    <p>Hi Everyone!</p>
+                    <p>My name is <strong>Pradeep Kapa</strong>, and I am a Senior Software Engineer specializing in Cloud, DevOps, Site Reliability Engineering (SRE), and AI/ML, focused on delivering scalable, reliable, secure, and high‑performance distributed systems in production environments. I have extensive experience designing, building, and operating cloud‑native platforms end to end—covering architecture, MLOps, infrastructure as code, CI/CD automation, observability, and incident management—to ensure applications are performant, resilient, and data‑driven at scale.</p>
+                    
+                    <div class="recruiter-section">
+                        <h3>For Recruiters:</h3>
+                        <p>If you're a recruiter who has stumbled onto this website and believe I would be a valuable addition to your company, please don't hesitate to reach out to me at <a href="mailto:pradeep.kapa@yahoo.com">pradeep.kapa@yahoo.com</a>. Alternatively, you can schedule a 30-minute conversation with me via Calendly to discuss potential opportunities.</p>
                     </div>
-                    <h1 class="text-2xl font-bold text-gray-900">Pradeep Kapa</h1>
-                    <p class="text-gray-600 text-sm mt-1">Sr. Software Engineer — Cloud & AI/ML</p>
-                    <p class="text-gray-600 text-sm italic">Nymbus</p>
-                </div>
 
-                <nav class="flex flex-col gap-2 mb-8">
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#certifications" class="nav-link">Certifications</a>
-                    <a href="#education" class="nav-link">Education</a>
-                </nav>
+                    <div class="recruiter-section">
+                        <h3>For Everyone Else:</h3>
+                        <p>For everyone else who is either looking to connect, know more about my journey, tell about yours or would just like to be friends here on the internet, feel free to connect over any of the socials or book a conversation.</p>
+                    </div>
 
-                <div class="space-y-2 text-sm text-gray-600">
-                    <div class="flex items-center gap-2"><i class="fas fa-envelope w-4"></i> pradeepkapa@gmail.com</div>
-                    <div class="flex items-center gap-2"><i class="fab fa-linkedin w-4"></i> <a href="https://linkedin.com/in/pradeepkapa" class="underline">LinkedIn</a></div>
-                    <div class="flex items-center gap-2"><i class="fas fa-location-dot w-4"></i> United States</div>
+                    <h2>About me</h2>
+                    <p>I am an experienced <strong>Senior Software Engineer</strong> with a strong focus on Cloud, DevOps, SRE, and AI/ML-enabled platforms. I enjoy designing and operating large-scale, cloud-native systems that are secure, observable, and highly available, bringing together robust architecture, automation, and reliability practices to support mission-critical applications in production.</p>
+                    
+                    <p>Over my career, I have worked end to end across modern infrastructure: building CI/CD pipelines, implementing infrastructure as code, optimizing monitoring and alerting, and driving incident response and post-incident improvements. My work often results in reduced downtime, faster and safer deployments, and better performance, helping teams deliver features with confidence while maintaining strong reliability standards.</p>
+                    
+                    <p>I am particularly passionate about integrating AI/ML into real-world products, enabling intelligent, data-driven capabilities that are supported by solid MLOps foundations. I thrive in forward-thinking teams that value ownership, collaboration, and continuous improvement, and I aim to bring both technical depth and a reliability-first mindset to every organization I join. Ready to contribute at scale, I am excited to work on systems where Cloud, DevOps, SRE, and AI/ML come together to create meaningful impact.</p>
                 </div>
             </div>
-        </aside>
+        </section>
 
-        <main class="md:w-3/4">
-            
-            <section id="about" class="mb-16">
-                <h2 class="section-title">About Me</h2>
-                <div class="text-gray-700 leading-relaxed space-y-4">
-                    <p>
-                        I am a Senior Software Engineer at <strong>Nymbus</strong>, where I focus on the intersection of Cloud Infrastructure and AI/ML. My work involves architecting scalable fintech solutions and leveraging automated deployment workflows.
-                    </p>
-                    <p>
-                        Previously, I held engineering roles at <strong>Nielsen</strong>, <strong>AIG</strong>, and <strong>Trace3</strong>. I am an AWS Certified Solutions Architect Professional and a HashiCorp Certified Terraform Associate.
-                    </p>
-                </div>
-            </section>
-
-            <section id="experience" class="mb-16">
-                <h2 class="section-title">Work Experience</h2>
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <h1>What I Do?</h1>
                 
-                <div class="experience-item">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-lg text-gray-900">Senior Software Engineer — Cloud & AI/ML</h3>
-                        <span class="experience-date">Oct 2024 – Present</span>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                        <h3>Cloud Engineering</h3>
+                        <p>Designing and operating scalable, secure cloud-native infrastructure using AWS, Azure, and GCP at enterprise scale.</p>
                     </div>
-                    <p class="text-blue-600 font-medium italic">Nymbus</p>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                        <h3>DevOps Automation</h3>
+                        <p>Building CI/CD pipelines, infrastructure as code with Terraform and Kubernetes, enabling zero-downtime deployments and rapid iteration.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Site Reliability Engineering</h3>
+                        <p>Implementing observability, alerting, and incident response systems to ensure 99.99% uptime and resilient production environments.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-brain"></i></div>
+                        <h3>AI/ML Operations</h3>
+                        <p>Deploying, monitoring, and scaling machine learning models with Kubeflow, MLflow, and cloud services for data-driven applications.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-server"></i></div>
+                        <h3>MCP Server Implementations</h3>
+                        <p>Developing protocol-compliant MCP servers for secure, standardized tool integrations in AI/ML and cloud workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <div class="container">
+                <h1>Resume</h1>
+                
+                <div class="resume-section">
+                    <h2>Education</h2>
+                    
+                    <div class="resume-item">
+                        <div class="resume-title">Master of Computer Science</div>
+                        <div class="resume-meta">Arizona State University | 2022 — 2024</div>
+                        <p>Advanced coursework in distributed systems, cloud computing, machine learning, and large-scale data processing.</p>
+                    </div>
+                    
+                    <div class="resume-item">
+                        <div class="resume-title">Bachelor of Technology - Computer Science</div>
+                        <div class="resume-meta">[Your University Name] | 2018 — 2022</div>
+                        <p>Specialized in software engineering, algorithms, and cloud infrastructure fundamentals.</p>
+                    </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-lg text-gray-900">Senior Software Engineer — Cloud</h3>
-                        <span class="experience-date">2019 – 2024</span>
+                <div class="resume-section">
+                    <h2>Experience</h2>
+                    
+                    <div class="resume-item">
+                        <div class="resume-title">Senior Software Engineer - Cloud & AI/ML</div>
+                        <div class="resume-meta">[Current Company] | 2024 — Present</div>
+                        <ul class="resume-bullets">
+                            <li>Designed and implemented scalable cloud-native infrastructure using AWS/GCP, reducing deployment times by 60% through automated CI/CD pipelines and Infrastructure as Code.</li>
+                            <li>Built production MLOps pipelines with Kubeflow and MLflow, enabling reliable ML model deployments with comprehensive monitoring and rollback capabilities.</li>
+                            <li>Developed MCP server implementations for standardized AI tool integrations, improving service communication reliability and observability across engineering teams.</li>
+                        </ul>
                     </div>
-                    <p class="text-blue-600 font-medium italic">Nielsen</p>
+                    
+                    <div class="resume-item">
+                        <div class="resume-title">Software Engineer - DevOps & SRE</div>
+                        <div class="resume-meta">[Previous Company] | 2022 — 2024</div>
+                        <ul class="resume-bullets">
+                            <li>Engineered Kubernetes-based container orchestration for microservices, achieving 99.99% uptime through comprehensive observability with Prometheus/Grafana.</li>
+                            <li>Automated infrastructure provisioning with Terraform, cutting provisioning time from 2 weeks to 4 hours while maintaining security compliance.</li>
+                            <li>Led incident response and post-mortem processes, reducing MTTR by 45% through enhanced alerting and on-call automation.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-lg text-gray-900">Cloud/DevOps Engineer</h3>
-                        <span class="experience-date">Apr 2019 – Dec 2019</span>
+                <div class="resume-section">
+                    <h2>My Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-name">AWS</div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Kubernetes</div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 92%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Terraform</div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 88%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Python</div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">MLOps/MLflow</div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Site Reliability Engineering</div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 93%"></div></div>
+                        </div>
                     </div>
-                    <p class="text-blue-600 font-medium italic">AIG</p>
                 </div>
+            </div>
+        </section>
 
-                <div class="experience-item">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-lg text-gray-900">Cloud Engineer</h3>
-                        <span class="experience-date">Apr 2018 – Apr 2019</span>
-                    </div>
-                    <p class="text-blue-600 font-medium italic">Trace3</p>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h1>Contact</h1>
+                <div class="about-text">
+                    <p>Reach out directly via the sidebar contacts or email me at <a href="mailto:pradeep.kapa@yahoo.com">pradeep.kapa@yahoo.com</a>.</p>
+                    <p>I'm always open to discussing Cloud, DevOps, SRE, AI/ML opportunities and collaborations!</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="certifications" class="mb-16">
-                <h2 class="section-title">Certifications</h2>
-                <ul class="list-disc ml-5 space-y-3 text-gray-700">
-                    <li>
-                        <strong>AWS Certified Solutions Architect – Professional</strong> (Amazon Web Services)
-                        <br><span class="text-sm text-gray-500 italic">Issued Jun 2024 · Expires Jun 2027</span>
-                    </li>
-                    <li>
-                        <strong>HashiCorp Certified: Terraform Associate (003)</strong> (HashiCorp)
-                        <br><span class="text-sm text-gray-500 italic">Issued Jun 2024 · Expires Jun 2026</span>
-                    </li>
-                </ul>
-            </section>
+        <!-- Portfolio Section (Placeholder) -->
+        <section id="portfolio">
+            <div class="container">
+                <h1>Portfolio</h1>
+                <p>Key projects and GitHub repositories coming soon. Check my GitHub profile for live code and implementations!</p>
+            </div>
+        </section>
+    </main>
 
-            <section id="education" class="mb-16">
-                <h2 class="section-title">Education</h2>
-                <div class="experience-item">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-lg text-gray-900">Master of Science in Computer Science</h3>
-                        <span class="experience-date">Graduated</span>
-                    </div>
-                    <p class="text-gray-600 italic">Frostburg State University</p>
-                </div>
-            </section>
-
-        </main>
-    </div>
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = link.getAttribute('data-section');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show target section
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(targetSection).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
