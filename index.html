@@ -8,167 +8,163 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #121212; color: #d6d6d6; font-family: 'Inter', sans-serif; }
-        
-        .page-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
+        .page-container { display: flex; flex-direction: column; gap: 25px; max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         @media (min-width: 1024px) { .page-container { flex-direction: row; align-items: flex-start; } }
-
-        /* Sidebar */
-        .sidebar {
-            background: #1e1e1f;
-            border: 1px solid #383838;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            width: 100%;
-        }
-
+        
+        .sidebar, .main-content { background: #1e1e1f; border: 1px solid #383838; border-radius: 20px; padding: 30px; }
+        .sidebar { width: 100%; text-align: center; }
         @media (min-width: 1024px) { .sidebar { width: 300px; position: sticky; top: 40px; } }
-
-        /* Main Content Box */
-        .main-content {
-            background: #1e1e1f;
-            border: 1px solid #383838;
-            border-radius: 20px;
-            padding: 30px;
-            flex: 1;
-            position: relative;
-        }
-
-        /* Top Navigation Bar */
-        .navbar {
-            background: #2b2b2c;
-            border: 1px solid #383838;
-            border-radius: 0 20px 0 20px;
-            padding: 15px 30px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-btn {
-            font-size: 14px;
-            font-weight: 500;
-            color: #d6d6d6;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
+        
+        /* Navbar */
+        .navbar { background: #2b2b2c; border: 1px solid #383838; border-radius: 0 20px 0 20px; padding: 15px 30px; position: absolute; top: 0; right: 0; display: flex; gap: 20px; z-index: 10; }
+        .nav-btn { font-size: 14px; color: #d6d6d6; cursor: pointer; font-weight: 500; transition: 0.3s; }
         .nav-btn:hover, .nav-btn.active { color: #ffdb70; }
-
-        /* Content Visibility */
+        
+        .main-content { flex: 1; position: relative; min-height: 800px; padding-top: 60px; }
         .content-section { display: none; }
-        .content-section.active { display: block; animation: fadeIn 0.5s ease; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
+        .content-section.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
         .section-title { font-size: 24px; font-weight: 700; color: #fafafa; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
         .section-title::after { content: ""; position: absolute; bottom: 0; left: 0; width: 40px; height: 5px; background: #ffdb70; border-radius: 3px; }
 
-        .item-card { margin-bottom: 25px; padding-left: 20px; border-left: 1px solid #383838; position: relative; }
-        .item-card::before { content: ""; position: absolute; top: 5px; left: -6px; width: 11px; height: 11px; background: #ffdb70; border-radius: 50%; box-shadow: 0 0 0 4px #1e1e1f; }
-        
-        .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; text-align: left; font-size: 13px; }
-        .icon-box { background: #2b2b2c; color: #ffdb70; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #383838; }
+        /* Resume Download Button */
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(to right, #ffdb70, #f59e0b);
+            color: #121212;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+        .download-btn:hover { transform: scale(1.02); opacity: 0.9; }
+
+        /* Timeline & Skill Grid */
+        .timeline-item { margin-bottom: 25px; padding-left: 20px; border-left: 1px solid #383838; position: relative; }
+        .timeline-item::before { content: ""; position: absolute; top: 5px; left: -6px; width: 11px; height: 11px; background: #ffdb70; border-radius: 50%; box-shadow: 0 0 0 4px #1e1e1f; }
+        .skill-box { background: #2b2b2c; padding: 15px; border-radius: 12px; border: 1px solid #383838; }
     </style>
 </head>
 <body>
 
     <div class="page-container">
         <aside class="sidebar">
-            <div class="bg-[#383838] rounded-2xl w-32 h-32 mx-auto mb-6 flex items-center justify-center">
-                <i class="fas fa-terminal text-5xl text-[#ffdb70]"></i>
+            <div class="bg-[#383838] rounded-3xl w-32 h-32 mx-auto mb-6 flex items-center justify-center">
+                <i class="fas fa-user-secret text-5xl text-[#ffdb70]"></i>
             </div>
             <h1 class="text-xl font-bold text-white mb-2">Pradeep Kapa</h1>
-            <p class="bg-[#2b2b2c] text-[10px] inline-block px-3 py-1 rounded-md mb-6 uppercase tracking-widest">Sr. Software Engineer</p>
+            <p class="bg-[#2b2b2c] text-[10px] inline-block px-3 py-1 rounded-md mb-6 uppercase tracking-widest text-gray-300">Sr. Software Engineer</p>
 
-            <div class="border-t border-[#383838] pt-6">
-                <div class="contact-item">
-                    <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                    <div><p class="text-gray-500 uppercase text-[10px]">Email</p>pradeep.kapa@yahoo.com</div>
-                </div>
-                <div class="contact-item">
-                    <div class="icon-box"><i class="fab fa-linkedin"></i></div>
-                    <div><p class="text-gray-500 uppercase text-[10px]">LinkedIn</p><a href="https://linkedin.com/in/pradeepkapa" target="_blank">/in/pradeepkapa</a></div>
-                </div>
+            <div class="border-t border-[#383838] pt-6 space-y-4 text-left text-xs">
+                <div class="flex items-center gap-3"><i class="fas fa-envelope text-[#ffdb70]"></i> pradeep.kapa@yahoo.com</div>
+                <div class="flex items-center gap-3"><i class="fab fa-linkedin text-[#ffdb70]"></i> <a href="https://linkedin.com/in/pradeepkapa" target="_blank">LinkedIn Profile</a></div>
+                <div class="flex items-center gap-3"><i class="fas fa-location-dot text-[#ffdb70]"></i> United States</div>
             </div>
+
+            <a href="resume.pdf" download class="download-btn">
+                <i class="fas fa-download"></i> Download CV
+            </a>
         </aside>
 
         <main class="main-content">
             <nav class="navbar hidden md:flex">
-                <span class="nav-btn active" onclick="showSection('about')">About</span>
-                <span class="nav-btn" onclick="showSection('resume')">Resume</span>
-                <span class="nav-btn" onclick="showSection('projects')">Projects</span>
-                <span class="nav-btn" onclick="showSection('blog')">Blog</span>
-                <span class="nav-btn" onclick="showSection('contact')">Contact</span>
+                <span class="nav-btn active" onclick="showTab('about')">About</span>
+                <span class="nav-btn" onclick="showTab('resume')">Resume</span>
+                <span class="nav-btn" onclick="showTab('projects')">Projects</span>
+                <span class="nav-btn" onclick="showTab('blog')">Blog</span>
+                <span class="nav-btn" onclick="showTab('contact')">Contact</span>
             </nav>
 
             <section id="about" class="content-section active">
                 <h2 class="section-title">About Me</h2>
-                <p>Senior Software Engineer specializing in Cloud, DevOps, and AI/ML. I build scalable, intelligent systems in production with a focus on SRE principles.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                    <div class="bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
-                        <h4 class="text-[#ffdb70] font-bold">Cloud Engineering</h4>
-                        <p class="text-xs text-gray-400">AWS, Azure, GCP Infrastructure</p>
+                <p class="mb-6 leading-relaxed">Senior Software Engineer at <strong>Nymbus</strong>, specializing in Cloud, DevOps, and AI/ML Ops. I build scalable infrastructure that powers the future of fintech.</p>
+                
+                <h3 class="text-xl font-bold mb-6 mt-10">Primary Focus</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="skill-box">
+                        <i class="fas fa-cloud text-[#ffdb70] mb-2"></i>
+                        <h4 class="font-bold">Cloud Arch</h4>
+                        <p class="text-xs text-gray-500">AWS Professional Level design & implementation.</p>
                     </div>
-                    <div class="bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
-                        <h4 class="text-[#ffdb70] font-bold">DevOps</h4>
-                        <p class="text-xs text-gray-400">Terraform, K8s, CI/CD</p>
+                    <div class="skill-box">
+                        <i class="fas fa-brain text-[#ffdb70] mb-2"></i>
+                        <h4 class="font-bold">AI/MLOps</h4>
+                        <p class="text-xs text-gray-500">Automating ML model lifecycles and scaling.</p>
                     </div>
                 </div>
             </section>
 
             <section id="resume" class="content-section">
                 <h2 class="section-title">Resume</h2>
-                <div class="item-card">
-                    <h4 class="text-white font-bold">Nymbus</h4>
-                    <p class="text-[#ffdb70] text-sm">Sr. Software Engineer | 2024 - Present</p>
+                
+                <div class="mb-10">
+                    <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-book-open text-[#ffdb70] mr-2"></i> Education</h3>
+                    <div class="timeline-item">
+                        <h4 class="text-white font-bold">Master of Science</h4>
+                        <p class="text-[#ffdb70] text-sm">Frostburg State University</p>
+                    </div>
                 </div>
-                <div class="item-card">
-                    <h4 class="text-white font-bold">Nielsen</h4>
-                    <p class="text-[#ffdb70] text-sm">Sr. Software Engineer - Cloud</p>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-briefcase text-[#ffdb70] mr-2"></i> Experience</h3>
+                    <div class="timeline-item">
+                        <h4 class="text-white font-bold">Nymbus | Sr. Software Engineer</h4>
+                        <p class="text-[#ffdb70] text-sm italic">Oct 2024 — Present</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="text-white font-bold">Nielsen | Sr. Software Engineer</h4>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="text-white font-bold">AIG | Cloud/DevOps Engineer</h4>
+                        <p class="text-gray-500 text-sm">2019</p>
+                    </div>
                 </div>
             </section>
 
             <section id="projects" class="content-section">
                 <h2 class="section-title">Projects</h2>
-                <p>Coming soon: Deep dives into my cloud architecture and AI/ML implementations.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="skill-box">
+                        <h4 class="text-white font-bold">IaC Pipeline</h4>
+                        <p class="text-xs text-gray-500 mt-2">Terraform-based multi-cloud governance framework.</p>
+                    </div>
+                    <div class="skill-box">
+                        <h4 class="text-white font-bold">SRE Dashboard</h4>
+                        <p class="text-xs text-gray-500 mt-2">Custom Grafana/Prometheus observability stack.</p>
+                    </div>
+                </div>
             </section>
 
             <section id="blog" class="content-section">
                 <h2 class="section-title">Blog</h2>
-                <p>Sharing my thoughts on DevOps, SRE, and the future of AI/ML Ops.</p>
+                <p>Technical writing on Cloud Architecture coming soon.</p>
             </section>
 
             <section id="contact" class="content-section">
                 <h2 class="section-title">Contact</h2>
-                <p>Feel free to reach out via LinkedIn or Email for collaborations.</p>
+                <p class="mb-8">I'm always open to discussing technical projects or opportunities.</p>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="skill-box">
+                        <p class="text-xs text-gray-500 uppercase">Direct Email</p>
+                        <p class="text-white font-bold">pradeep.kapa@yahoo.com</p>
+                    </div>
+                </div>
             </section>
         </main>
     </div>
 
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            // Update nav button state
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.innerText.toLowerCase() === sectionId) btn.classList.add('active');
-            });
+        function showTab(tabId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
     </script>
 </body>
