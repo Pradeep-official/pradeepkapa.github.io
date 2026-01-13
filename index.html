@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pradeep Kapa | Senior Software Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body { background-color: #121212; color: #e5e7eb; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    .glass { background: #1e1e1f; border: 1px solid #383838; border-radius: 20px; }
+    .accent-text { color: #ffdb70; }
+    .sidebar-card { position: sticky; top: 30px; }
+    .nav-link:hover { color: #ffdb70; transition: 0.3s; }
+    .timeline-dot { width: 12px; height: 12px; background: #ffdb70; border-radius: 50%; position: absolute; left: -31px; top: 5px; box-shadow: 0 0 0 4px #1e1e1f; }
+    .cert-card { background: #2b2b2c; border: 1px solid #383838; transition: 0.3s; }
+    .cert-card:hover { border-color: #ffdb70; transform: translateY(-3px); }
+  </style>
+</head>
+<body class="p-4 md:p-10 lg:px-24">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
+    
+    <aside class="lg:w-1/4">
+      <div class="glass p-8 text-center sidebar-card">
+        <div class="bg-[#383838] w-32 h-32 rounded-3xl mx-auto mb-5 flex items-center justify-center overflow-hidden border-2 border-[#ffdb70]/20">
+           <i class="fas fa-terminal text-5xl text-[#ffdb70]"></i>
+        </div>
+        <h1 class="text-2xl font-bold mb-1">Pradeep Kapa</h1>
+        <p class="bg-[#2b2b2c] text-[10px] font-bold uppercase tracking-widest inline-block px-4 py-1.5 rounded-lg mb-8 text-[#ffdb70]">Sr. Software Engineer</p>
+        
+        <div class="space-y-6 text-left border-t border-[#383838] pt-8">
+          <div class="flex items-center gap-4">
+            <div class="glass p-2.5 text-[#ffdb70] shadow-xl text-xs"><i class="fas fa-cloud"></i></div>
+            <div>
+              <p class="text-gray-400 text-[10px] uppercase">Specialization</p>
+              <p class="text-sm font-medium">Cloud & AI/ML</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="glass p-2.5 text-[#ffdb70] shadow-xl text-xs"><i class="fab fa-linkedin"></i></div>
+            <div>
+              <p class="text-gray-400 text-[10px] uppercase">LinkedIn</p>
+              <a href="https://linkedin.com/in/pradeepkapa" target="_blank" class="text-sm hover:text-[#ffdb70]">/in/pradeepkapa</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="glass p-2.5 text-[#ffdb70] shadow-xl text-xs"><i class="fas fa-location-dot"></i></div>
+            <div>
+              <p class="text-gray-400 text-[10px] uppercase">Location</p>
+              <p class="text-sm font-medium">United States</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="lg:w-3/4 glass p-8 md:p-12 relative">
+      <nav class="absolute top-0 right-0 bg-[#2b2b2c] border-b border-l border-[#383838] rounded-bl-2xl rounded-tr-2xl px-8 py-4 hidden md:block text-xs font-bold uppercase tracking-widest text-gray-400">
+        <ul class="flex gap-8">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#certs" class="nav-link">Certs</a></li>
+        </ul>
+      </nav>
+
+      <section id="about" class="mb-12 pt-4">
+        <h2 class="text-3xl font-bold mb-6 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1.5 after:bg-[#ffdb70] after:rounded-full">About Me</h2>
+        <p class="text-gray-300 leading-relaxed text-lg mb-4">
+          Senior Software Engineer with extensive experience in **Cloud Infrastructure**, **Platform Engineering**, and **AI/ML**. I specialize in architecting highly available, scalable solutions within the AWS ecosystem using Terraform and modern DevOps practices.
+        </p>
+      </section>
+
+      <section id="experience" class="mb-12">
+        <h2 class="text-2xl font-bold mb-8 flex items-center gap-4">
+          <i class="fas fa-briefcase text-[#ffdb70]"></i> Professional Experience
+        </h2>
+        <div class="ml-8 border-l border-[#383838] space-y-10">
+          
+          <div class="relative pl-8">
+            <div class="timeline-dot"></div>
+            <h3 class="text-lg font-bold">Senior Software Engineer – Cloud & AI/ML</h3>
+            <span class="text-[#ffdb70] text-sm">Nymbus | Oct 2024 — Present</span>
+            <p class="text-gray-400 text-sm mt-2 leading-relaxed">Developing advanced fintech solutions at the intersection of cloud architecture and AI.</p>
+          </div>
+
+          <div class="relative pl-8">
+            <div class="timeline-dot bg-[#383838]"></div>
+            <h3 class="text-lg font-bold">Senior Software Engineer - Cloud</h3>
+            <span class="text-[#ffdb70] text-sm">Nielsen</span>
+            <p class="text-gray-400 text-sm mt-2 leading-relaxed">Engineered cloud-native platforms to handle high-throughput data and analytics workloads.</p>
+          </div>
+
+          <div class="relative pl-8">
+            <div class="timeline-dot bg-[#383838]"></div>
+            <h3 class="text-lg font-bold">Cloud/DevOps Engineer</h3>
+            <span class="text-[#ffdb70] text-sm">AIG | Apr 2019 — Dec 2019</span>
+            <p class="text-gray-400 text-sm mt-2 leading-relaxed">Focused on automation, CI/CD pipelines, and cloud governance for enterprise financial systems.</p>
+          </div>
+
+          <div class="relative pl-8">
+            <div class="timeline-dot bg-[#383838]"></div>
+            <h3 class="text-lg font-bold">Cloud Engineer</h3>
+            <span class="text-[#ffdb70] text-sm">Trace3 | Apr 2018 — Apr 2019</span>
+            <p class="text-gray-400 text-sm mt-2 leading-relaxed">Delivered cloud consulting and infrastructure migrations for diverse client portfolios.</p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold mt-16 mb-8 flex items-center gap-4">
+          <i class="fas fa-graduation-cap text-[#ffdb70]"></i> Education
+        </h2>
+        <div class="ml-8 border-l border-[#383838] space-y-10">
+          <div class="relative pl-8">
+            <div class="timeline-dot"></div>
+            <h3 class="text-lg font-bold">Master of Science</h3>
+            <span class="text-[#ffdb70] text-sm">Frostburg State University</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="certs" class="mb-12">
+        <h2 class="text-2xl font-bold mb-8 flex items-center gap-4">
+          <i class="fas fa-award text-[#ffdb70]"></i> Key Certifications
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="cert-card p-6 rounded-xl border-l-4 border-l-orange-500">
+            <h4 class="font-bold text-sm">AWS Solutions Architect</h4>
+            <p class="text-xs text-[#ffdb70] mt-1 font-bold italic">Professional (SAP-C02)</p>
+            <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-tighter italic">Issued Jun 2024 · Exp Jun 2027</p>
+          </div>
+          <div class="cert-card p-6 rounded-xl border-l-4 border-l-purple-500">
+            <h4 class="font-bold text-sm">Terraform Associate (003)</h4>
+            <p class="text-xs text-purple-400 mt-1 font-bold italic">HashiCorp Certified</p>
+            <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-tighter italic">Issued Jun 2024 · Exp Jun 2026</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="text-2xl font-bold mb-8">Technical Proficiency</h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-[#2b2b2c] px-3 py-1 rounded text-xs border border-gray-700">AWS Professional Architecture</span>
+          <span class="bg-[#2b2b2c] px-3 py-1 rounded text-xs border border-gray-700">Terraform & IaC</span>
+          <span class="bg-[#2b2b2c] px-3 py-1 rounded text-xs border border-gray-700">Kubernetes & Docker</span>
+          <span class="bg-[#2b2b2c] px-3 py-1 rounded text-xs border border-gray-700">Python / Java</span>
+          <span class="bg-[#2b2b2c] px-3 py-1 rounded text-xs border border-gray-700">AI/ML Integration</span>
+          <span class="bg-[#2b2b2c] px-3 py-1 rounded text-xs border border-gray-700">DevSecOps</span>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
