@@ -2,20 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pradeep Kapa | Senior Software Engineer</title>
     
     <meta name="theme-color" content="#121212">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="color-scheme" content="dark">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body { background-color: #121212; color: #d6d6d6; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        
+        /* Prevent horizontal scroll */
+        html, body { 
+            overflow-x: hidden; 
+            background-color: #121212; 
+            color: #d6d6d6; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0;
+            width: 100%;
+        }
+
         .page-container {
             display: flex;
             flex-direction: column;
@@ -23,97 +29,109 @@
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
+            box-sizing: border-box;
         }
 
         @media (min-width: 1024px) {
             .page-container { flex-direction: row; align-items: flex-start; }
         }
 
-        /* Sidebar & Main Card Style */
-        .sidebar, .main-content {
+        /* Sidebar Style */
+        .sidebar {
             background: #1e1e1f;
             border: 1px solid #383838;
             border-radius: 20px;
             padding: 30px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
         }
-
-        .sidebar { width: 100%; text-align: center; }
         @media (min-width: 1024px) {
             .sidebar { width: 300px; position: sticky; top: 40px; }
         }
 
-        /* Navigation Menu */
+        /* Main Content "Sheet" View */
+        .main-content {
+            flex: 1;
+            background: #1e1e1f;
+            border: 1px solid #383838;
+            border-radius: 20px;
+            position: relative;
+            min-height: 800px;
+            padding: 60px 30px 30px 30px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        /* Navbar Fixed to Top Right of Content */
         .navbar {
             background: #2b2b2c;
-            border: 1px solid #383838;
+            border-bottom: 1px solid #383838;
+            border-left: 1px solid #383838;
             border-radius: 0 20px 0 20px;
-            padding: 15px 30px;
+            padding: 15px 25px;
             position: absolute;
-            top: 0;
-            right: 0;
+            top: -1px;
+            right: -1px;
             display: flex;
             gap: 20px;
             z-index: 10;
         }
-        .nav-btn { font-size: 14px; color: #d6d6d6; cursor: pointer; font-weight: 500; transition: 0.3s; }
+        .nav-btn { font-size: 13px; color: #d6d6d6; cursor: pointer; font-weight: 500; transition: 0.3s; }
         .nav-btn:hover, .nav-btn.active { color: #ffdb70; }
 
-        /* Content Areas */
-        .main-content { flex: 1; position: relative; min-height: 800px; padding-top: 80px; }
-        .content-section { display: none; }
+        .content-section { display: none; width: 100%; }
         .content-section.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Headers & Accents */
         .section-title { font-size: 24px; font-weight: 700; color: #fafafa; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
         .section-title::after { content: ""; position: absolute; bottom: 0; left: 0; width: 40px; height: 5px; background: #ffdb70; border-radius: 3px; }
 
-        .timeline-item { margin-bottom: 25px; padding-left: 20px; border-left: 1px solid #383838; position: relative; }
-        .timeline-item::before { content: ""; position: absolute; top: 5px; left: -6px; width: 11px; height: 11px; background: #ffdb70; border-radius: 50%; box-shadow: 0 0 0 4px #1e1e1f; }
-        
-        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 15px; padding: 20px; transition: 0.3s; height: 100%; }
-        
+        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 15px; padding: 20px; }
+
+        /* Logos Fixed */
+        .company-logo { 
+            max-height: 30px; 
+            max-width: 120px;
+            filter: brightness(0) invert(1); 
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        .company-logo:hover { opacity: 1; filter: none; }
+
+        /* Marquee Fixed Width */
+        .marquee-container { 
+            overflow: hidden; 
+            width: 100%;
+            background: #2b2b2c; 
+            border: 1px solid #383838; 
+            padding: 15px 0; 
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        .marquee-content { display: inline-flex; gap: 50px; animation: scroll 20s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
         .download-btn {
             display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: linear-gradient(to right, #ffdb70, #f59e0b); color: #121212;
+            background: #ffdb70; color: #121212;
             padding: 12px; border-radius: 12px; font-weight: 700; margin-top: 25px; transition: 0.3s;
         }
-        .download-btn:hover { transform: translateY(-2px); opacity: 0.9; }
-
-        /* Logo Management */
-        .company-logo { max-height: 35px; width: auto; filter: grayscale(1) invert(0.8); transition: 0.3s; }
-        .company-logo:hover { filter: grayscale(0) invert(0); }
-
-        /* Marquee Animation */
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .marquee-container { overflow: hidden; white-space: nowrap; background: #2b2b2c; border: 1px solid #383838; padding: 20px 0; margin-top: 20px; }
-        .marquee-content { display: inline-flex; gap: 60px; animation: scroll 30s linear infinite; }
-        .tech-item { display: flex; align-items: center; gap: 10px; color: #888; font-weight: 600; }
-        .tech-item i { font-size: 1.5rem; }
     </style>
 </head>
 <body>
 
     <div class="page-container">
         <aside class="sidebar">
-            <div class="bg-[#383838] rounded-3xl w-32 h-32 mx-auto mb-6 flex items-center justify-center">
-                <i class="fas fa-microchip text-5xl text-[#ffdb70]"></i>
+            <div class="bg-[#383838] rounded-3xl w-28 h-28 mx-auto mb-6 flex items-center justify-center">
+                <i class="fas fa-terminal text-4xl text-[#ffdb70]"></i>
             </div>
             <h1 class="text-xl font-bold text-white mb-1">Pradeep Kapa</h1>
-            <p class="bg-[#2b2b2c] text-[10px] inline-block px-3 py-1 rounded-md mb-2 uppercase tracking-widest text-gray-300">Sr. Software Engineer</p>
+            <p class="bg-[#2b2b2c] text-[10px] inline-block px-3 py-1 rounded-md mb-6 uppercase tracking-widest text-gray-300">Sr. Software Engineer</p>
             
-            <div class="flex items-center justify-center gap-2 mb-6">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span class="text-[10px] text-gray-400 uppercase tracking-tighter text-center">Available for Consulting</span>
-            </div>
-
-            <div class="border-t border-[#383838] pt-6 space-y-4 text-left text-xs">
+            <div class="space-y-4 text-left text-xs border-t border-[#383838] pt-6">
                 <div class="flex items-center gap-3"><i class="fas fa-envelope text-[#ffdb70]"></i> pradeep.kapa@yahoo.com</div>
-                <div class="flex items-center gap-3"><i class="fas fa-phone text-[#ffdb70]"></i> +1 (813) 863-1523</div>
-                <div class="flex items-center gap-3"><i class="fab fa-linkedin text-[#ffdb70]"></i> <a href="https://linkedin.com/in/pradeepkapa" target="_blank" class="hover:text-[#ffdb70]">/in/pradeepkapa</a></div>
+                <div class="flex items-center gap-3"><i class="fab fa-linkedin text-[#ffdb70]"></i> <a href="https://linkedin.com/in/pradeepkapa" target="_blank">linkedin.com/in/pradeepkapa</a></div>
                 <div class="flex items-center gap-3"><i class="fas fa-location-dot text-[#ffdb70]"></i> Florida, USA</div>
             </div>
 
@@ -141,99 +159,74 @@
                 </div>
 
                 <h3 class="text-xl font-bold text-white mb-6">What I Do?</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                     <div class="card-box">
-                        <i class="fas fa-cloud text-[#ffdb70] text-2xl mb-3"></i>
+                        <i class="fas fa-cloud text-[#ffdb70] mb-2"></i>
                         <h4 class="text-white font-bold">Cloud Engineering</h4>
-                        <p class="text-xs text-gray-500 mt-1">Designing high-concurrency AWS/Azure environments.</p>
+                        <p class="text-xs text-gray-500">AWS/Azure architecture at scale.</p>
                     </div>
                     <div class="card-box">
-                        <i class="fas fa-infinity text-[#ffdb70] text-2xl mb-3"></i>
-                        <h4 class="text-white font-bold">DevOps Automation</h4>
-                        <p class="text-xs text-gray-500 mt-1">Full CI/CD, Terraform, and K8s orchestration.</p>
+                        <i class="fas fa-robot text-[#ffdb70] mb-2"></i>
+                        <h4 class="text-white font-bold">MLOps</h4>
+                        <p class="text-xs text-gray-500">Deploying production ML models.</p>
                     </div>
                 </div>
 
-                <h3 class="text-xl font-bold text-white mb-6">Companies I've Worked With</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center mb-12">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Nielsen_logo_2021.svg" alt="Nielsen" class="company-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/AIG_logo.svg" alt="AIG" class="company-logo">
-                    <div class="text-lg font-light text-white tracking-[0.2em] opacity-50 hover:opacity-100 transition">NYMBUS</div>
-                    <div class="text-lg font-black text-white opacity-50 hover:opacity-100 transition">TRACE<span class="text-[#ffdb70]">3</span></div>
+                <h3 class="text-xl font-bold text-white mb-6">Companies</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center mb-10">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Nielsen_Logo.svg" alt="Nielsen" class="company-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/AIG_logo_2012.svg" alt="AIG" class="company-logo">
+                    <div class="text-sm font-bold text-white opacity-60">NYMBUS</div>
+                    <div class="text-sm font-bold text-white opacity-60">TRACE3</div>
                 </div>
 
                 <h3 class="text-xl font-bold text-white mb-6">Certifications</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-                    <div class="flex items-center gap-4 bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
-                        <i class="fab fa-aws text-3xl text-[#ffdb70]"></i>
-                        <div>
-                            <p class="text-white font-bold text-sm">AWS Solutions Architect</p>
-                            <p class="text-gray-500 text-[10px] uppercase">Professional</p>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="card-box flex items-center gap-3">
+                        <i class="fab fa-aws text-2xl text-[#ffdb70]"></i>
+                        <span class="text-xs font-bold">AWS Solutions Architect Prof.</span>
                     </div>
-                    <div class="flex items-center gap-4 bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
-                        <i class="fas fa-shield-halved text-3xl text-[#ffdb70]"></i>
-                        <div>
-                            <p class="text-white font-bold text-sm">HashiCorp Terraform</p>
-                            <p class="text-gray-500 text-[10px] uppercase">Associate</p>
-                        </div>
+                    <div class="card-box flex items-center gap-3">
+                        <i class="fas fa-code-branch text-2xl text-[#ffdb70]"></i>
+                        <span class="text-xs font-bold">Terraform Associate</span>
                     </div>
                 </div>
 
-                <h3 class="text-xl font-bold text-white mb-6">Tools & Tech Stack</h3>
-                <div class="marquee-container rounded-xl">
+                <div class="marquee-container">
                     <div class="marquee-content">
-                        <div class="tech-item"><i class="fab fa-aws"></i> AWS</div>
-                        <div class="tech-item"><i class="fab fa-docker"></i> Docker</div>
-                        <div class="tech-item"><i class="fas fa-cubes"></i> K8s</div>
-                        <div class="tech-item"><i class="fas fa-code-branch"></i> Terraform</div>
-                        <div class="tech-item"><i class="fab fa-python"></i> Python</div>
-                        <div class="tech-item"><i class="fab fa-jenkins"></i> Jenkins</div>
-                        <div class="tech-item"><i class="fab fa-aws"></i> AWS</div>
-                        <div class="tech-item"><i class="fab fa-docker"></i> Docker</div>
-                        <div class="tech-item"><i class="fas fa-cubes"></i> K8s</div>
-                        <div class="tech-item"><i class="fas fa-code-branch"></i> Terraform</div>
-                        <div class="tech-item"><i class="fab fa-python"></i> Python</div>
-                        <div class="tech-item"><i class="fab fa-jenkins"></i> Jenkins</div>
+                        <span class="text-xs font-bold text-gray-500">AWS</span>
+                        <span class="text-xs font-bold text-gray-500">DOCKER</span>
+                        <span class="text-xs font-bold text-gray-500">K8S</span>
+                        <span class="text-xs font-bold text-gray-500">TERRAFORM</span>
+                        <span class="text-xs font-bold text-gray-500">PYTHON</span>
+                        <span class="text-xs font-bold text-gray-500">JENKINS</span>
+                        <span class="text-xs font-bold text-gray-500">AWS</span>
+                        <span class="text-xs font-bold text-gray-500">DOCKER</span>
+                        <span class="text-xs font-bold text-gray-500">K8S</span>
                     </div>
                 </div>
             </section>
 
             <section id="resume" class="content-section">
                 <h2 class="section-title">Resume</h2>
-                <div class="space-y-8">
-                    <div>
-                        <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-briefcase text-[#ffdb70] mr-2"></i> Experience</h3>
-                        <div class="timeline-item">
-                            <h4 class="text-white font-bold">Senior Software Engineer – Cloud & AI/ML</h4>
-                            <p class="text-[#ffdb70] text-sm">Nymbus | Oct 2024 — Present</p>
-                        </div>
-                        <div class="timeline-item"><h4 class="text-white font-bold">Senior Software Engineer</h4><p class="text-gray-400 text-sm">Nielsen</p></div>
-                        <div class="timeline-item"><h4 class="text-white font-bold">Cloud/DevOps Engineer</h4><p class="text-gray-400 text-sm">AIG</p></div>
-                        <div class="timeline-item"><h4 class="text-white font-bold">Cloud Engineer</h4><p class="text-gray-400 text-sm">Trace3</p></div>
+                <div class="space-y-6">
+                    <div class="border-l-2 border-[#383838] pl-4">
+                        <h4 class="text-white font-bold">Senior Software Engineer</h4>
+                        <p class="text-[#ffdb70] text-xs">Nymbus | 2024 - Present</p>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-graduation-cap text-[#ffdb70] mr-2"></i> Education</h3>
-                        <div class="timeline-item">
-                            <h4 class="text-white font-bold">Master of Science in Computer Science</h4>
-                            <p class="text-[#ffdb70] text-sm">Frostburg State University</p>
-                        </div>
+                    <div class="border-l-2 border-[#383838] pl-4">
+                        <h4 class="text-white font-bold">Software Engineer</h4>
+                        <p class="text-gray-500 text-xs">Nielsen</p>
                     </div>
                 </div>
             </section>
 
             <section id="projects" class="content-section">
                 <h2 class="section-title">Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="card-box hover:border-[#ffdb70] transition border border-transparent">
-                        <h4 class="font-bold text-white mb-2">MLOps Pipeline</h4>
-                        <p class="text-xs text-gray-400 mb-4">Automated training and deployment pipeline for financial models using Kubeflow.</p>
-                        <span class="text-[10px] bg-[#383838] px-2 py-1 rounded text-[#ffdb70]">Kubeflow</span>
-                    </div>
-                    <div class="card-box hover:border-[#ffdb70] transition border border-transparent">
-                        <h4 class="font-bold text-white mb-2">IaC Framework</h4>
-                        <p class="text-xs text-gray-400 mb-4">Enterprise-grade AWS infrastructure governance and provisioning with Terraform.</p>
-                        <span class="text-[10px] bg-[#383838] px-2 py-1 rounded text-[#ffdb70]">Terraform</span>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="card-box">
+                        <h4 class="text-white font-bold">Infrastructure as Code</h4>
+                        <p class="text-xs text-gray-500">Automated global AWS environments.</p>
                     </div>
                 </div>
             </section>
@@ -241,18 +234,10 @@
             <section id="contact" class="content-section">
                 <h2 class="section-title">Contact</h2>
                 <div class="card-box">
-                    <p class="text-gray-400 mb-6">I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-                    <div class="space-y-4">
-                        <a href="mailto:pradeep.kapa@yahoo.com" class="block text-white font-bold text-lg hover:text-[#ffdb70] transition">
-                            <i class="fas fa-envelope mr-3 text-[#ffdb70]"></i> pradeep.kapa@yahoo.com
-                        </a>
-                        <div class="text-white font-bold text-lg">
-                            <i class="fas fa-phone mr-3 text-[#ffdb70]"></i> +1 (813) 863-1523
-                        </div>
-                    </div>
+                    <p class="text-sm text-gray-400">Email me at:</p>
+                    <p class="text-white font-bold">pradeep.kapa@yahoo.com</p>
                 </div>
             </section>
-
         </main>
     </div>
 
