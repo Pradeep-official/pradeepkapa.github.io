@@ -3,163 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pradeep Kapa - Senior Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Pradeep Kapa</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
             line-height: 1.8; 
-            color: #2d3748; 
-            overflow-x: hidden;
+            color: #2d3748;
             scroll-behavior: smooth;
         }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
         
-        /* Hero - EXACT Aarushi style */
+        /* HERO - EXACT Aarushi */
         .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 120px 24px 80px;
             color: white;
+            padding: 0 24px;
         }
         .hero h1 { 
-            font-size: clamp(2.8rem, 6vw, 5rem); 
+            font-size: 4.5rem; 
             font-weight: 800; 
             margin-bottom: 2rem;
-            line-height: 1.1;
+            line-height: 1;
         }
-        .hero strong { color: white; }
-        .hero p { 
-            font-size: clamp(1.1rem, 3vw, 1.4rem); 
-            max-width: 800px; 
-            margin: 0 auto 3rem;
-            opacity: 0.95;
+        .hero-content { 
+            max-width: 700px; 
+            font-size: 1.3rem;
         }
+        .hero-content strong { color: white !important; }
         
-        /* Sections */
-        section { padding: 120px 0; }
-        .light-bg { background: #f8fafc; }
+        /* SECTIONS */
+        section { padding: 100px 0; }
+        .light-section { background: #f7fafc; }
+        
         h2 { 
-            font-size: clamp(2rem, 5vw, 3.5rem); 
+            font-size: 3rem; 
             text-align: center; 
-            margin-bottom: 4rem; 
+            margin-bottom: 60px; 
             font-weight: 800;
-            color: #1e293b;
+            color: #1a202c;
         }
         
-        /* Recruiter boxes - Aarushi style */
+        /* RECRUITER BOXES - EXACT Aarushi */
         .recruiter-box {
             background: white;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-            padding: 48px;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
-            border-left: 6px solid #6366f1;
+            margin: 0 auto 60px;
+            max-width: 650px;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
         }
         .recruiter-box h3 { 
-            color: #6366f1; 
-            font-size: 1.75rem; 
-            margin-bottom: 1.5rem;
+            color: #667eea; 
+            font-size: 1.5rem; 
+            margin-bottom: 20px;
             font-weight: 700;
         }
         .recruiter-box p { 
             font-size: 1.2rem; 
-            color: #475569;
-            margin-bottom: 1rem;
+            margin-bottom: 12px;
         }
+        .recruiter-box strong { color: #2d3748; }
         .recruiter-box a { 
-            color: #6366f1; 
+            color: #667eea; 
             font-weight: 600;
             text-decoration: none;
         }
         
-        /* What I Do - EXACT Aarushi cards */
+        /* WHAT I DO CARDS - EXACT Aarushi */
+        .skills-section h2 { margin-bottom: 40px; }
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         .skill-card {
             background: white;
-            padding: 48px 32px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            padding: 50px 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             text-align: center;
-            transition: all 0.3s ease;
-            border-top: 4px solid transparent;
         }
-        .skill-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-        }
-        .skill-card h3 {
-            font-size: 1.75rem;
-            color: #1e293b;
-            margin-bottom: 1rem;
+        .skill-card h3 { 
+            font-size: 1.8rem; 
+            color: #2d3748; 
+            margin-bottom: 15px;
             font-weight: 700;
         }
-        .skill-card p {
-            color: #64748b;
+        .skill-card p { 
+            color: #718096; 
             font-size: 1.1rem;
         }
         
+        /* ABOUT ME */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.25rem;
+            color: #4a5568;
+        }
+        
         @media (max-width: 768px) {
-            .hero { padding: 80px 20px 60px; }
-            section { padding: 80px 0; }
-            .recruiter-box, .skill-card { padding: 32px 24px; }
+            .hero h1 { font-size: 3rem; }
+            .hero-content { font-size: 1.1rem; }
+            section { padding: 60px 0; }
+            .recruiter-box, .skill-card { padding: 30px 20px; }
+            h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero - EXACT Aarushi layout -->
+    <!-- HERO - IDENTICAL TO AARUSHI -->
     <section class="hero">
         <div class="container">
             <div>
                 <h1>My name</h1>
-                <p>Hi Everyone!<br>
-                <strong>Pradeep Kapa</strong> and I am a seasoned Senior Software Engineer specializing in Cloud, DevOps, SRE, and AI/ML, focused on building scalable, reliable, intelligent, and secure systems in production. Drawing on hands-on experience designing and operating cloud-native platforms, I work across the full lifecycle—from architecture, MLOps, and automation to observability and incident response—to keep applications performant, resilient, and data-driven.</p>
+                <div class="hero-content">
+                    <p>Hi Everyone!<br>
+                    <strong>Pradeep Kapa</strong> and I am a seasoned Senior Software Engineer specializing in Cloud, DevOps, SRE, and AI/ML, focused on building scalable, reliable, intelligent, and secure systems in production. Drawing on hands-on experience designing and operating cloud-native platforms, I work across the full lifecycle—from architecture, MLOps, and automation to observability and incident response—to keep applications performant, resilient, and data-driven.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Recruiters -->
-    <section class="light-bg">
+    <!-- RECRUITERS - IDENTICAL -->
+    <section class="light-section">
         <div class="container">
             <div class="recruiter-box">
-                <h3>For Recruiters:</h3>
+                <h3>For Recruiters :</h3>
                 <p>If you're a recruiter who has stumbled onto this website and believe I would be a valuable addition to your company, please don't hesitate to reach out to me at</p>
-                <p><strong><a href="mailto:pradeep.kapa@yahoo.com">pradeep.kapa@yahoo.com</a></strong></p>
+                <p><strong><a href="mailto:pradeep.kapa@yahoo.com">pradeep.kapa@yahoo.com</a></strong>.</p>
                 <p>📞 <strong>+1 (813) 863-1523</strong></p>
             </div>
 
             <div class="recruiter-box">
-                <h3>For Everyone Else:</h3>
-                <p>For everyone else who is either looking to connect, know more about my journey, tell about yours or would just like to be friends here on the internet, feel free to connect over any of the socials.</p>
+                <h3>For everyone else</h3>
+                <p>who is either looking to connect, know more about my journey, tell about yours or would just like to be friends here on the internet, feel free to connect over any of the socials</p>
             </div>
         </div>
     </section>
 
-    <!-- About Me -->
+    <!-- ABOUT ME - IDENTICAL -->
     <section>
         <div class="container">
             <h2>About me</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.2rem; color: #475569;">
-                <p>I am an experienced <strong>Senior Software Engineer</strong> with a strong focus on Cloud, DevOps, SRE, and AI/ML-enabled platforms. I enjoy designing and operating large-scale, cloud-native systems that are secure, observable, and highly available.</p>
-                <p style="margin-top: 2rem;">Over my career, I have worked end to end across modern infrastructure: building CI/CD pipelines, implementing infrastructure as code, optimizing monitoring and alerting, and driving incident response. My work results in reduced downtime, faster deployments, and better performance.</p>
-                <p style="margin-top: 2rem; font-style: italic;">Ready to contribute at scale to systems where Cloud, DevOps, SRE, and AI/ML create meaningful impact.</p>
+            <div class="about-content">
+                <p>I am an experienced <strong>Senior Software Engineer</strong> with a strong focus on Cloud, DevOps, SRE, and AI/ML-enabled platforms. I enjoy designing and operating large-scale, cloud-native systems that are secure, observable, and highly available, bringing together robust architecture, automation, and reliability practices to support mission-critical applications in production.</p>
+                
+                <p style="margin-top: 2rem;">Over my career, I have worked end to end across modern infrastructure: building CI/CD pipelines, implementing infrastructure as code, optimizing monitoring and alerting, and driving incident response and post-incident improvements. My work often results in reduced downtime, faster and safer deployments, and better performance.</p>
+                
+                <p style="margin-top: 2rem; font-style: italic;">Ready to contribute at scale, I am excited to work on systems where Cloud, DevOps, SRE, and AI/ML come together to create meaningful impact.</p>
             </div>
         </div>
     </section>
 
-    <!-- What I Do -->
-    <section class="light-bg">
+    <!-- WHAT I DO - IDENTICAL -->
+    <section class="light-section">
         <div class="container">
             <h2>What I do ?</h2>
             <div class="skills-grid">
@@ -169,15 +175,19 @@
                 </div>
                 <div class="skill-card">
                     <h3>DevOps Automation</h3>
-                    <p>Building CI/CD pipelines, infrastructure as code with Terraform and Kubernetes, enabling zero-downtime deployments.</p>
+                    <p>Building CI/CD pipelines, infrastructure as code with Terraform and Kubernetes, enabling zero-downtime deployments and rapid iteration.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Site Reliability Engineering</h3>
-                    <p>Implementing observability, alerting, and incident response systems to ensure 99.99% uptime.</p>
+                    <p>Implementing observability, alerting, and incident response systems to ensure 99.99% uptime and resilient production environments.</p>
                 </div>
                 <div class="skill-card">
                     <h3>AI/ML Operations</h3>
-                    <p>Deploying, monitoring, and scaling machine learning models with Kubeflow, MLflow, and cloud services.</p>
+                    <p>Deploying, monitoring, and scaling machine learning models with Kubeflow, MLflow, and cloud services for data-driven applications.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>MCP Server Implementations</h3>
+                    <p>Developing protocol-compliant MCP servers for secure, standardized tool integrations in AI/ML and cloud workflows.</p>
                 </div>
             </div>
         </div>
