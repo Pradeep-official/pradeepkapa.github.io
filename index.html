@@ -7,14 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Exact Background and Font Colors from the vCard/Aarushi style */
-        body { 
-            background-color: #121212; 
-            color: #d6d6d6; 
-            font-family: 'Inter', sans-serif; 
-        }
+        body { background-color: #121212; color: #d6d6d6; font-family: 'Inter', sans-serif; }
         
-        /* The main container that splits Sidebar and Content */
         .page-container {
             display: flex;
             flex-direction: column;
@@ -24,14 +18,9 @@
             padding: 0 20px;
         }
 
-        @media (min-width: 1024px) {
-            .page-container {
-                flex-direction: row;
-                align-items: flex-start;
-            }
-        }
+        @media (min-width: 1024px) { .page-container { flex-direction: row; align-items: flex-start; } }
 
-        /* Sidebar - Fixed/Sticky on the left */
+        /* Sidebar */
         .sidebar {
             background: #1e1e1f;
             border: 1px solid #383838;
@@ -41,107 +30,66 @@
             width: 100%;
         }
 
-        @media (min-width: 1024px) {
-            .sidebar {
-                width: 300px;
-                position: sticky;
-                top: 40px;
-            }
-        }
+        @media (min-width: 1024px) { .sidebar { width: 300px; position: sticky; top: 40px; } }
 
-        .avatar-box {
-            background: #383838;
-            border-radius: 20px;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Main Content Area on the right */
+        /* Main Content Box */
         .main-content {
             background: #1e1e1f;
             border: 1px solid #383838;
             border-radius: 20px;
             padding: 30px;
             flex: 1;
-        }
-
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #fafafa;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 5px;
-            background: #ffdb70;
-            border-radius: 3px;
-        }
-
-        /* Lists and Experience items */
-        .item-card {
-            margin-bottom: 25px;
-            padding-left: 20px;
-            border-left: 1px solid #383838;
             position: relative;
         }
 
-        .item-card::before {
-            content: "";
-            position: absolute;
-            top: 5px;
-            left: -6px;
-            width: 11px;
-            height: 11px;
-            background: #ffdb70;
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px #1e1e1f;
-        }
-
-        .item-title { color: #fafafa; font-weight: 600; }
-        .item-date { color: #ffdb70; font-size: 14px; font-weight: 400; }
-        .contact-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            margin-bottom: 20px; 
-            text-align: left; 
-            font-size: 13px;
-        }
-        .icon-box {
+        /* Top Navigation Bar */
+        .navbar {
             background: #2b2b2c;
-            color: #ffdb70;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
             border: 1px solid #383838;
+            border-radius: 0 20px 0 20px;
+            padding: 15px 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 20px;
         }
+
+        .nav-btn {
+            font-size: 14px;
+            font-weight: 500;
+            color: #d6d6d6;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover, .nav-btn.active { color: #ffdb70; }
+
+        /* Content Visibility */
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-title { font-size: 24px; font-weight: 700; color: #fafafa; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .section-title::after { content: ""; position: absolute; bottom: 0; left: 0; width: 40px; height: 5px; background: #ffdb70; border-radius: 3px; }
+
+        .item-card { margin-bottom: 25px; padding-left: 20px; border-left: 1px solid #383838; position: relative; }
+        .item-card::before { content: ""; position: absolute; top: 5px; left: -6px; width: 11px; height: 11px; background: #ffdb70; border-radius: 50%; box-shadow: 0 0 0 4px #1e1e1f; }
+        
+        .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; text-align: left; font-size: 13px; }
+        .icon-box { background: #2b2b2c; color: #ffdb70; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #383838; }
     </style>
 </head>
 <body>
 
     <div class="page-container">
-        
         <aside class="sidebar">
-            <div class="avatar-box">
-                <i class="fas fa-user-gear text-5xl text-[#ffdb70]"></i>
+            <div class="bg-[#383838] rounded-2xl w-32 h-32 mx-auto mb-6 flex items-center justify-center">
+                <i class="fas fa-terminal text-5xl text-[#ffdb70]"></i>
             </div>
             <h1 class="text-xl font-bold text-white mb-2">Pradeep Kapa</h1>
-            <p class="bg-[#2b2b2c] text-[11px] inline-block px-3 py-1 rounded-md mb-6 uppercase tracking-wider">Sr. Software Engineer</p>
+            <p class="bg-[#2b2b2c] text-[10px] inline-block px-3 py-1 rounded-md mb-6 uppercase tracking-widest">Sr. Software Engineer</p>
 
             <div class="border-t border-[#383838] pt-6">
                 <div class="contact-item">
@@ -149,77 +97,79 @@
                     <div><p class="text-gray-500 uppercase text-[10px]">Email</p>pradeep.kapa@yahoo.com</div>
                 </div>
                 <div class="contact-item">
-                    <div class="icon-box"><i class="fas fa-phone"></i></div>
-                    <div><p class="text-gray-500 uppercase text-[10px]">Phone</p>+1 (813) 863-1523</div>
-                </div>
-                <div class="contact-item">
                     <div class="icon-box"><i class="fab fa-linkedin"></i></div>
-                    <div><p class="text-gray-500 uppercase text-[10px]">LinkedIn</p><a href="https://linkedin.com/in/pradeepkapa" class="hover:text-[#ffdb70]">/in/pradeepkapa</a></div>
+                    <div><p class="text-gray-500 uppercase text-[10px]">LinkedIn</p><a href="https://linkedin.com/in/pradeepkapa" target="_blank">/in/pradeepkapa</a></div>
                 </div>
             </div>
         </aside>
 
         <main class="main-content">
-            
-            <section class="mb-12">
+            <nav class="navbar hidden md:flex">
+                <span class="nav-btn active" onclick="showSection('about')">About</span>
+                <span class="nav-btn" onclick="showSection('resume')">Resume</span>
+                <span class="nav-btn" onclick="showSection('projects')">Projects</span>
+                <span class="nav-btn" onclick="showSection('blog')">Blog</span>
+                <span class="nav-btn" onclick="showSection('contact')">Contact</span>
+            </nav>
+
+            <section id="about" class="content-section active">
                 <h2 class="section-title">About Me</h2>
-                <p class="text-gray-400 leading-relaxed">
-                    I am a Senior Software Engineer specializing in Cloud, DevOps, SRE, and AI/ML. 
-                    I focus on building scalable, reliable, and secure systems in production, 
-                    working across the full lifecycle from architecture to incident response.
-                </p>
-            </section>
-
-            <section class="mb-12">
-                <h2 class="section-title">Experience</h2>
-                
-                <div class="item-card">
-                    <h3 class="item-title">Senior Software Engineer – Cloud & AI/ML</h3>
-                    <p class="item-date">Nymbus | Oct 2024 — Present</p>
-                    <p class="text-sm text-gray-500 mt-2">Leading cloud transformations and AI integration for banking platforms.</p>
-                </div>
-
-                <div class="item-card">
-                    <h3 class="item-title">Senior Software Engineer - Cloud</h3>
-                    <p class="item-date">Nielsen | Prior Experience</p>
-                </div>
-
-                <div class="item-card">
-                    <h3 class="item-title">Cloud/DevOps Engineer</h3>
-                    <p class="item-date">AIG | 2019</p>
-                </div>
-            </section>
-
-            <section class="mb-12">
-                <h2 class="section-title">Certifications</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <p>Senior Software Engineer specializing in Cloud, DevOps, and AI/ML. I build scalable, intelligent systems in production with a focus on SRE principles.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                     <div class="bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
-                        <p class="text-[#ffdb70] text-xs font-bold uppercase">AWS Professional</p>
-                        <h4 class="text-sm font-bold text-white">Solutions Architect</h4>
+                        <h4 class="text-[#ffdb70] font-bold">Cloud Engineering</h4>
+                        <p class="text-xs text-gray-400">AWS, Azure, GCP Infrastructure</p>
                     </div>
                     <div class="bg-[#2b2b2c] p-4 rounded-xl border border-[#383838]">
-                        <p class="text-[#ffdb70] text-xs font-bold uppercase">HashiCorp</p>
-                        <h4 class="text-sm font-bold text-white">Terraform Associate</h4>
+                        <h4 class="text-[#ffdb70] font-bold">DevOps</h4>
+                        <p class="text-xs text-gray-400">Terraform, K8s, CI/CD</p>
                     </div>
                 </div>
             </section>
 
-            <section>
-                <h2 class="section-title">What I Do</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-[#ffdb70] font-bold mb-2">Cloud Engineering</h4>
-                        <p class="text-xs text-gray-500">Designing secure cloud-native infrastructure at enterprise scale.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-[#ffdb70] font-bold mb-2">DevOps Automation</h4>
-                        <p class="text-xs text-gray-500">CI/CD pipelines and IaC with Terraform and Kubernetes.</p>
-                    </div>
+            <section id="resume" class="content-section">
+                <h2 class="section-title">Resume</h2>
+                <div class="item-card">
+                    <h4 class="text-white font-bold">Nymbus</h4>
+                    <p class="text-[#ffdb70] text-sm">Sr. Software Engineer | 2024 - Present</p>
+                </div>
+                <div class="item-card">
+                    <h4 class="text-white font-bold">Nielsen</h4>
+                    <p class="text-[#ffdb70] text-sm">Sr. Software Engineer - Cloud</p>
                 </div>
             </section>
 
+            <section id="projects" class="content-section">
+                <h2 class="section-title">Projects</h2>
+                <p>Coming soon: Deep dives into my cloud architecture and AI/ML implementations.</p>
+            </section>
+
+            <section id="blog" class="content-section">
+                <h2 class="section-title">Blog</h2>
+                <p>Sharing my thoughts on DevOps, SRE, and the future of AI/ML Ops.</p>
+            </section>
+
+            <section id="contact" class="content-section">
+                <h2 class="section-title">Contact</h2>
+                <p>Feel free to reach out via LinkedIn or Email for collaborations.</p>
+            </section>
         </main>
     </div>
 
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            // Update nav button state
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.innerText.toLowerCase() === sectionId) btn.classList.add('active');
+            });
+        }
+    </script>
 </body>
 </html>
