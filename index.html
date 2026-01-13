@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* CRITICAL: Lock horizontal width */
+        /* Fix for horizontal scroll and general layout */
         html, body { 
             overflow-x: hidden; 
             width: 100%;
@@ -60,6 +60,7 @@
             box-sizing: border-box;
         }
 
+        /* Section "Sheets" */
         section {
             background: #1e1e1f;
             border: 1px solid #383838;
@@ -81,29 +82,27 @@
             content: ""; position: absolute; bottom: 0; left: 0; width: 40px; height: 5px; background: #ffdb70; border-radius: 3px; 
         }
 
-        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 16px; padding: 25px; }
+        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 16px; padding: 25px; height: 100%; }
 
-        /* Aarushi-Style Company Display */
-        .company-grid {
+        /* Logos Visibility */
+        .logo-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 30px;
+            align-items: center;
             margin-top: 20px;
         }
-        @media (min-width: 640px) { .company-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (min-width: 640px) { .logo-grid { grid-template-columns: repeat(4, 1fr); } }
 
-        .company-item {
-            background: #2b2b2c;
-            border: 1px solid #383838;
-            border-radius: 12px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .company-logo { 
+            max-height: 28px; 
+            width: auto; 
+            filter: brightness(0) invert(1); 
+            opacity: 0.7;
+            margin: 0 auto;
             transition: 0.3s;
         }
-        .company-item:hover { border-color: #ffdb70; transform: translateY(-2px); }
-        .company-name { font-weight: 800; font-size: 14px; letter-spacing: 1px; color: #fff; opacity: 0.8; }
+        .company-logo:hover { opacity: 1; filter: none; }
 
         .btn-primary {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -113,7 +112,6 @@
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255, 219, 112, 0.2); }
 
-        /* Timeline Fix */
         .timeline-item { 
             padding-left: 20px; border-left: 2px solid #383838; margin-bottom: 25px; position: relative;
         }
@@ -122,29 +120,14 @@
         }
 
         .highlight-text { color: #ffdb70; font-weight: 600; }
-
-        /* Back to Top Button */
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #ffdb70; color: #121212;
-            width: 45px; height: 45px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            cursor: pointer; opacity: 0; visibility: hidden; transition: 0.3s; z-index: 100;
-        }
-        #backToTop.show { opacity: 1; visibility: visible; }
     </style>
 </head>
 <body>
 
-    <div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
     <div class="page-container">
         <aside class="sidebar">
             <div class="bg-[#2b2b2c] rounded-3xl w-28 h-28 mx-auto mb-6 flex items-center justify-center">
-                <i class="fas fa-laptop-code text-5xl text-[#ffdb70]"></i>
+                <i class="fas fa-user-shield text-5xl text-[#ffdb70]"></i>
             </div>
             <h1 class="text-xl font-bold text-white mb-1">Pradeep Kapa</h1>
             <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-6">Sr. Software Engineer</p>
@@ -165,42 +148,59 @@
             <section id="intro">
                 <h2 class="section-title">Hi Everyone!</h2>
                 <p class="text-gray-300 leading-relaxed mb-6">
-                    My name is <span class="highlight-text">Pradeep Kapa</span>, and I am a Senior Software Engineer specializing in <span class="highlight-text">Cloud, DevOps, SRE, and AI/ML</span>, focused on delivering scalable, reliable, secure, and high‑performance distributed systems in production environments.
+                    My name is <span class="highlight-text">Pradeep Kapa</span>, and I am a Senior Software Engineer specializing in <span class="highlight-text">Cloud, DevOps, Site Reliability Engineering (SRE), and AI/ML</span>. I focus on delivering scalable, reliable, secure, and high-performance distributed systems in production environments.
                 </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                    I have extensive experience designing, building, and operating cloud-native platforms end to end—covering architecture, MLOps, infrastructure as code, CI/CD automation, observability, and incident management—to ensure applications are performant, resilient, and data-driven at scale.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="card-box">
                         <h4 class="text-white font-bold mb-3"><i class="fas fa-briefcase text-[#ffdb70] mr-2"></i> For Recruiters</h4>
-                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">If you believe I would be a valuable addition to your company, please reach out or book a slot.</p>
+                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">If you believe I would be a valuable addition to your company, please reach out or schedule a chat.</p>
                         <div class="flex flex-wrap gap-2">
                             <a href="mailto:applications.adhingra@gmail.com" class="btn-primary py-2 px-4 text-[11px]">Email Me</a>
-                            <a href="#" class="bg-[#383838] text-white px-4 py-2 rounded-xl text-[11px] font-bold hover:bg-[#444] transition">Calendly</a>
+                            <a href="https://calendly.com" target="_blank" class="bg-[#383838] text-white px-4 py-2 rounded-xl text-[11px] font-bold hover:bg-[#444] transition"><i class="fas fa-calendar-alt mr-1"></i> Calendly</a>
                         </div>
                     </div>
                     <div class="card-box">
-                        <h4 class="text-white font-bold mb-3"><i class="fas fa-handshake text-[#ffdb70] mr-2"></i> For Connections</h4>
-                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">Looking to connect, know more about my journey, or just be friends? Feel free to reach out.</p>
-                        <a href="https://linkedin.com/in/pradeepkapa" class="btn-primary py-2 px-4 text-[11px]">Say Hello</a>
+                        <h4 class="text-white font-bold mb-3"><i class="fas fa-users text-[#ffdb70] mr-2"></i> Let's Connect</h4>
+                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">Looking to connect, know more about my journey, or just be friends? Feel free to reach out over socials.</p>
+                        <a href="https://linkedin.com/in/pradeepkapa" class="btn-primary py-2 px-4 text-[11px]">View Socials</a>
                     </div>
                 </div>
             </section>
 
             <section id="about">
                 <h2 class="section-title">About Me</h2>
-                <p class="text-gray-400 leading-relaxed mb-4">
-                    I am an experienced <strong>Senior Software Engineer</strong> with a strong focus on Cloud, DevOps, SRE, and AI/ML-enabled platforms. I enjoy designing and operating large-scale, cloud-native systems that are secure, observable, and highly available.
-                </p>
                 <p class="text-gray-400 leading-relaxed mb-6">
-                    Over my career, I have worked end to end across modern infrastructure: building CI/CD pipelines, implementing infrastructure as code, and driving incident response. I am particularly passionate about integrating AI/ML into real-world products supported by solid <span class="highlight-text">MLOps</span> foundations.
+                    I enjoy designing and operating large-scale, cloud-native systems that are secure, observable, and highly available, bringing together robust architecture, automation, and reliability practices to support mission-critical applications in production.
                 </p>
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    Over my career, I have worked end to end across modern infrastructure: building CI/CD pipelines, implementing infrastructure as code, optimizing monitoring and alerting, and driving incident response. My work often results in <span class="highlight-text">reduced downtime</span> and <span class="highlight-text">safer deployments</span>.
+                </p>
+
+                <h3 class="text-lg font-bold text-white mb-4">What I Do?</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="card-box">
+                        <i class="fas fa-cloud-upload-alt text-[#ffdb70] text-xl mb-3"></i>
+                        <h4 class="text-white text-sm font-bold">Cloud & DevOps</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">AWS/Azure architecture with Terraform and K8s orchestration.</p>
+                    </div>
+                    <div class="card-box">
+                        <i class="fas fa-brain text-[#ffdb70] text-xl mb-3"></i>
+                        <h4 class="text-white text-sm font-bold">AI/ML Operations</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">Integrating solid MLOps foundations into real-world products.</p>
+                    </div>
+                </div>
             </section>
 
             <section id="experience">
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title">Professional Journey</h2>
                 <div class="space-y-4 mb-10">
                     <div class="timeline-item">
                         <h4 class="text-white font-bold text-sm">Senior Software Engineer – Cloud & AI/ML</h4>
-                        <p class="text-[#ffdb70] text-[11px] font-bold uppercase tracking-wider">Nymbus | Oct 2024 — Present</p>
+                        <p class="text-[#ffdb70] text-[11px] font-bold">Nymbus | Oct 2024 — Present</p>
                     </div>
                     <div class="timeline-item">
                         <h4 class="text-white font-bold text-sm">Senior Software Engineer</h4>
@@ -216,12 +216,11 @@
                     </div>
                 </div>
 
-                <h3 class="text-sm font-bold text-gray-500 uppercase tracking-[3px] mb-6">Trusted By</h3>
-                <div class="company-grid">
-                    <div class="company-item"><span class="company-name">NYMBUS</span></div>
-                    <div class="company-item"><span class="company-name" style="letter-spacing: 4px;">NIELSEN</span></div>
-                    <div class="company-item"><span class="company-name">AIG</span></div>
-                    <div class="company-item"><span class="company-name">TRACE<span style="color:#ffdb70">3</span></span></div>
+                <div class="logo-grid">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Nielsen_Logo.svg" alt="Nielsen" class="company-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/AIG_logo_2012.svg" alt="AIG" class="company-logo">
+                    <div class="text-[13px] font-bold text-white opacity-40 text-center tracking-widest">NYMBUS</div>
+                    <div class="text-[13px] font-bold text-white opacity-40 text-center tracking-widest">TRACE3</div>
                 </div>
             </section>
 
@@ -232,42 +231,35 @@
                         <i class="fab fa-aws text-3xl text-[#ffdb70]"></i>
                         <div>
                             <p class="text-white font-bold text-xs">AWS Solutions Architect</p>
-                            <p class="text-gray-500 text-[9px] uppercase tracking-tighter">Professional</p>
+                            <p class="text-gray-500 text-[9px] uppercase tracking-tighter">Professional Level</p>
                         </div>
                     </div>
                     <div class="card-box flex items-center gap-4">
                         <i class="fas fa-shield-halved text-2xl text-[#ffdb70]"></i>
                         <div>
                             <p class="text-white font-bold text-xs">HashiCorp Terraform</p>
-                            <p class="text-gray-500 text-[9px] uppercase tracking-tighter">Associate</p>
+                            <p class="text-gray-500 text-[9px] uppercase tracking-tighter">Associate Level</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="contact" class="mb-20">
-                <h2 class="section-title">Contact</h2>
+                <h2 class="section-title">Get In Touch</h2>
                 <div class="card-box text-center">
-                    <p class="text-gray-400 text-sm mb-6">Ready to contribute at scale, I am excited to work on systems where Cloud, DevOps, SRE, and AI/ML come together.</p>
+                    <p class="text-gray-400 text-sm mb-6">I thrive in forward-thinking teams that value ownership and continuous improvement.</p>
                     <a href="mailto:pradeep.kapa@yahoo.com" class="text-white font-bold text-xl hover:text-[#ffdb70] transition block mb-4">
                         pradeep.kapa@yahoo.com
                     </a>
+                    <div class="flex justify-center gap-6 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-[#ffdb70]"><i class="fab fa-github text-xl"></i></a>
+                        <a href="https://linkedin.com/in/pradeepkapa" class="text-gray-400 hover:text-[#ffdb70]"><i class="fab fa-linkedin text-xl"></i></a>
+                    </div>
                 </div>
             </section>
 
         </main>
     </div>
 
-    <script>
-        // Show/Hide Back to Top Button
-        window.onscroll = function() {
-            const btn = document.getElementById("backToTop");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                btn.classList.add("show");
-            } else {
-                btn.classList.remove("show");
-            }
-        };
-    </script>
 </body>
 </html>
