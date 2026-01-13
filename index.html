@@ -4,51 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pradeep Kapa | Senior Software Engineer</title>
+    
+    <meta name="theme-color" content="#121212">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="color-scheme" content="dark">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { background-color: #121212; color: #d6d6d6; font-family: 'Inter', sans-serif; }
-        .page-container { display: flex; flex-direction: column; gap: 25px; max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        @media (min-width: 1024px) { .page-container { flex-direction: row; align-items: flex-start; } }
+        body { background-color: #121212; color: #d6d6d6; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        .sidebar, .main-content { background: #1e1e1f; border: 1px solid #383838; border-radius: 20px; padding: 30px; }
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .page-container { flex-direction: row; align-items: flex-start; }
+        }
+
+        /* Sidebar & Main Card Style */
+        .sidebar, .main-content {
+            background: #1e1e1f;
+            border: 1px solid #383838;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
         .sidebar { width: 100%; text-align: center; }
-        @media (min-width: 1024px) { .sidebar { width: 300px; position: sticky; top: 40px; } }
-        
-        /* Navbar */
-        .navbar { background: #2b2b2c; border: 1px solid #383838; border-radius: 0 20px 0 20px; padding: 15px 30px; position: absolute; top: 0; right: 0; display: flex; gap: 20px; z-index: 10; }
+        @media (min-width: 1024px) {
+            .sidebar { width: 300px; position: sticky; top: 40px; }
+        }
+
+        /* Navigation Menu */
+        .navbar {
+            background: #2b2b2c;
+            border: 1px solid #383838;
+            border-radius: 0 20px 0 20px;
+            padding: 15px 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
         .nav-btn { font-size: 14px; color: #d6d6d6; cursor: pointer; font-weight: 500; transition: 0.3s; }
         .nav-btn:hover, .nav-btn.active { color: #ffdb70; }
-        
+
+        /* Content Areas */
         .main-content { flex: 1; position: relative; min-height: 800px; padding-top: 60px; }
         .content-section { display: none; }
         .content-section.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Headers & Accents */
         .section-title { font-size: 24px; font-weight: 700; color: #fafafa; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
         .section-title::after { content: ""; position: absolute; bottom: 0; left: 0; width: 40px; height: 5px; background: #ffdb70; border-radius: 3px; }
 
-        /* Resume Download Button */
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(to right, #ffdb70, #f59e0b);
-            color: #121212;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 700;
-            margin-top: 30px;
-            transition: 0.3s;
-        }
-        .download-btn:hover { transform: scale(1.02); opacity: 0.9; }
-
-        /* Timeline & Skill Grid */
         .timeline-item { margin-bottom: 25px; padding-left: 20px; border-left: 1px solid #383838; position: relative; }
         .timeline-item::before { content: ""; position: absolute; top: 5px; left: -6px; width: 11px; height: 11px; background: #ffdb70; border-radius: 50%; box-shadow: 0 0 0 4px #1e1e1f; }
-        .skill-box { background: #2b2b2c; padding: 15px; border-radius: 12px; border: 1px solid #383838; }
+        
+        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 15px; padding: 20px; transition: 0.3s; }
+        
+        .download-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(to right, #ffdb70, #f59e0b); color: #121212;
+            padding: 12px; border-radius: 12px; font-weight: 700; margin-top: 25px; transition: 0.3s;
+        }
+        .download-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* Marquee Animation */
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-container { overflow: hidden; white-space: nowrap; background: #2b2b2c; border: 1px solid #383838; padding: 20px 0; margin-top: 20px; }
+        .marquee-content { display: inline-flex; gap: 60px; animation: scroll 30s linear infinite; }
+        .tech-item { display: flex; align-items: center; gap: 10px; color: #888; font-weight: 600; }
+        .tech-item i { font-size: 1.5rem; }
     </style>
 </head>
 <body>
@@ -56,15 +93,24 @@
     <div class="page-container">
         <aside class="sidebar">
             <div class="bg-[#383838] rounded-3xl w-32 h-32 mx-auto mb-6 flex items-center justify-center">
-                <i class="fas fa-user-secret text-5xl text-[#ffdb70]"></i>
+                <i class="fas fa-microchip text-5xl text-[#ffdb70]"></i>
             </div>
-            <h1 class="text-xl font-bold text-white mb-2">Pradeep Kapa</h1>
-            <p class="bg-[#2b2b2c] text-[10px] inline-block px-3 py-1 rounded-md mb-6 uppercase tracking-widest text-gray-300">Sr. Software Engineer</p>
+            <h1 class="text-xl font-bold text-white mb-1">Pradeep Kapa</h1>
+            <p class="bg-[#2b2b2c] text-[10px] inline-block px-3 py-1 rounded-md mb-2 uppercase tracking-widest text-gray-300">Sr. Software Engineer</p>
+            
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-tighter">Available for Consulting</span>
+            </div>
 
             <div class="border-t border-[#383838] pt-6 space-y-4 text-left text-xs">
                 <div class="flex items-center gap-3"><i class="fas fa-envelope text-[#ffdb70]"></i> pradeep.kapa@yahoo.com</div>
-                <div class="flex items-center gap-3"><i class="fab fa-linkedin text-[#ffdb70]"></i> <a href="https://linkedin.com/in/pradeepkapa" target="_blank">LinkedIn Profile</a></div>
-                <div class="flex items-center gap-3"><i class="fas fa-location-dot text-[#ffdb70]"></i> United States</div>
+                <div class="flex items-center gap-3"><i class="fas fa-phone text-[#ffdb70]"></i> +1 (813) 863-1523</div>
+                <div class="flex items-center gap-3"><i class="fab fa-linkedin text-[#ffdb70]"></i> <a href="https://linkedin.com/in/pradeepkapa" target="_blank" class="hover:text-[#ffdb70]">/in/pradeepkapa</a></div>
+                <div class="flex items-center gap-3"><i class="fas fa-location-dot text-[#ffdb70]"></i> Florida, USA</div>
             </div>
 
             <a href="resume.pdf" download class="download-btn">
@@ -83,79 +129,109 @@
 
             <section id="about" class="content-section active">
                 <h2 class="section-title">About Me</h2>
-                <p class="mb-6 leading-relaxed">Senior Software Engineer at <strong>Nymbus</strong>, specializing in Cloud, DevOps, and AI/ML Ops. I build scalable infrastructure that powers the future of fintech.</p>
-                
-                <h3 class="text-xl font-bold mb-6 mt-10">Primary Focus</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="skill-box">
-                        <i class="fas fa-cloud text-[#ffdb70] mb-2"></i>
-                        <h4 class="font-bold">Cloud Arch</h4>
-                        <p class="text-xs text-gray-500">AWS Professional Level design & implementation.</p>
-                    </div>
-                    <div class="skill-box">
-                        <i class="fas fa-brain text-[#ffdb70] mb-2"></i>
-                        <h4 class="font-bold">AI/MLOps</h4>
-                        <p class="text-xs text-gray-500">Automating ML model lifecycles and scaling.</p>
+                <div class="mb-10">
+                    <h3 class="text-xl font-bold text-white mb-4">Hi Everyone!</h3>
+                    <p class="leading-relaxed text-gray-400">
+                        I am <strong>Pradeep Kapa</strong>, a seasoned Senior Software Engineer specializing in Cloud, DevOps, SRE, and AI/ML. 
+                        I build scalable, reliable, and intelligent systems. I work across the full lifecycle—from architecture and MLOps to observability.
+                    </p>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mb-6">What I Do?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                    <div class="card-box"><h4 class="text-[#ffdb70] font-bold">Cloud Engineering</h4><p class="text-xs text-gray-500">AWS/Azure architecture at scale.</p></div>
+                    <div class="card-box"><h4 class="text-[#ffdb70] font-bold">DevOps Automation</h4><p class="text-xs text-gray-500">CI/CD, Terraform, and K8s.</p></div>
+                    <div class="card-box"><h4 class="text-[#ffdb70] font-bold">SRE & Observability</h4><p class="text-xs text-gray-500">Maintaining 99.99% system uptime.</p></div>
+                    <div class="card-box"><h4 class="text-[#ffdb70] font-bold">AI/ML Operations</h4><p class="text-xs text-gray-500">Deploying production ML models.</p></div>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mb-6">Testimonials</h3>
+                <div class="card-box italic text-sm text-gray-400 border-l-4 border-l-[#ffdb70] mb-12">
+                    "Pradeep consistently delivers robust cloud solutions and has a deep understanding of MLOps."
+                </div>
+
+                <h3 class="text-xl font-bold text-white mb-6">Companies I've Worked With</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-50 grayscale hover:grayscale-0 transition-all">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Nielsen_logo_2021.svg" alt="Nielsen" class="h-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/AIG_logo.svg" alt="AIG" class="h-6">
+                    <div class="text-lg font-black text-white">TRACE<span class="text-[#ffdb70]">3</span></div>
+                    <div class="text-lg font-light text-white uppercase tracking-widest">Nymbus</div>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mb-6 mt-12">Tools & Tech</h3>
+                <div class="marquee-container rounded-xl">
+                    <div class="marquee-content">
+                        <div class="tech-item"><i class="fab fa-aws"></i> AWS</div>
+                        <div class="tech-item"><i class="fab fa-docker"></i> Docker</div>
+                        <div class="tech-item"><i class="fas fa-cubes"></i> K8s</div>
+                        <div class="tech-item"><i class="fas fa-code-branch"></i> Terraform</div>
+                        <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+                        <div class="tech-item"><i class="fab fa-jenkins"></i> Jenkins</div>
+                        <div class="tech-item"><i class="fab fa-aws"></i> AWS</div>
+                        <div class="tech-item"><i class="fab fa-docker"></i> Docker</div>
+                        <div class="tech-item"><i class="fas fa-cubes"></i> K8s</div>
+                        <div class="tech-item"><i class="fas fa-code-branch"></i> Terraform</div>
+                        <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+                        <div class="tech-item"><i class="fab fa-jenkins"></i> Jenkins</div>
                     </div>
                 </div>
             </section>
 
             <section id="resume" class="content-section">
                 <h2 class="section-title">Resume</h2>
-                
-                <div class="mb-10">
-                    <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-book-open text-[#ffdb70] mr-2"></i> Education</h3>
-                    <div class="timeline-item">
-                        <h4 class="text-white font-bold">Master of Science</h4>
-                        <p class="text-[#ffdb70] text-sm">Frostburg State University</p>
-                    </div>
+                <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-briefcase text-[#ffdb70] mr-2"></i> Experience</h3>
+                <div class="timeline-item">
+                    <h4 class="text-white font-bold">Senior Software Engineer – Cloud & AI/ML</h4>
+                    <p class="text-[#ffdb70] text-sm">Nymbus | Oct 2024 — Present</p>
                 </div>
-
-                <div>
-                    <h3 class="text-lg font-bold mb-6 text-white"><i class="fas fa-briefcase text-[#ffdb70] mr-2"></i> Experience</h3>
-                    <div class="timeline-item">
-                        <h4 class="text-white font-bold">Nymbus | Sr. Software Engineer</h4>
-                        <p class="text-[#ffdb70] text-sm italic">Oct 2024 — Present</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h4 class="text-white font-bold">Nielsen | Sr. Software Engineer</h4>
-                    </div>
-                    <div class="timeline-item">
-                        <h4 class="text-white font-bold">AIG | Cloud/DevOps Engineer</h4>
-                        <p class="text-gray-500 text-sm">2019</p>
-                    </div>
+                <div class="timeline-item"><h4 class="text-white font-bold">Senior Software Engineer</h4><p class="text-gray-400 text-sm">Nielsen</p></div>
+                <div class="timeline-item"><h4 class="text-white font-bold">Cloud/DevOps Engineer</h4><p class="text-gray-400 text-sm">AIG</p></div>
+                <div class="timeline-item"><h4 class="text-white font-bold">Cloud Engineer</h4><p class="text-gray-400 text-sm">Trace3</p></div>
+                
+                <h3 class="text-lg font-bold mt-10 mb-6 text-white"><i class="fas fa-graduation-cap text-[#ffdb70] mr-2"></i> Education</h3>
+                <div class="timeline-item">
+                    <h4 class="text-white font-bold">Master of Science</h4>
+                    <p class="text-[#ffdb70] text-sm">Frostburg State University</p>
                 </div>
             </section>
 
             <section id="projects" class="content-section">
                 <h2 class="section-title">Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="skill-box">
-                        <h4 class="text-white font-bold">IaC Pipeline</h4>
-                        <p class="text-xs text-gray-500 mt-2">Terraform-based multi-cloud governance framework.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card-box hover:border-[#ffdb70]">
+                        <h4 class="font-bold text-white mb-2">MLOps Pipeline</h4>
+                        <p class="text-xs text-gray-400 mb-4">Automated training and deployment pipeline for financial models.</p>
+                        <span class="text-[10px] bg-[#383838] px-2 py-1 rounded text-[#ffdb70]">Kubeflow</span>
                     </div>
-                    <div class="skill-box">
-                        <h4 class="text-white font-bold">SRE Dashboard</h4>
-                        <p class="text-xs text-gray-500 mt-2">Custom Grafana/Prometheus observability stack.</p>
+                    <div class="card-box hover:border-[#ffdb70]">
+                        <h4 class="font-bold text-white mb-2">IaC Framework</h4>
+                        <p class="text-xs text-gray-400 mb-4">Global AWS infrastructure governance using Terraform.</p>
+                        <span class="text-[10px] bg-[#383838] px-2 py-1 rounded text-[#ffdb70]">Terraform</span>
                     </div>
                 </div>
             </section>
 
             <section id="blog" class="content-section">
                 <h2 class="section-title">Blog</h2>
-                <p>Technical writing on Cloud Architecture coming soon.</p>
+                <div class="card-box">
+                    <h4 class="font-bold text-white">Scaling AI/ML on Kubernetes</h4>
+                    <p class="text-xs text-[#ffdb70] mb-2">Coming Soon</p>
+                    <p class="text-sm text-gray-400">Deep dive into managing model lifecycle at scale...</p>
+                </div>
             </section>
 
             <section id="contact" class="content-section">
                 <h2 class="section-title">Contact</h2>
-                <p class="mb-8">I'm always open to discussing technical projects or opportunities.</p>
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="skill-box">
-                        <p class="text-xs text-gray-500 uppercase">Direct Email</p>
-                        <p class="text-white font-bold">pradeep.kapa@yahoo.com</p>
+                <form action="https://formspree.io/f/your-id-here" method="POST" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" name="name" placeholder="Name" required class="bg-[#1e1e1f] border border-[#383838] rounded-xl p-3 text-sm focus:border-[#ffdb70] outline-none">
+                        <input type="email" name="email" placeholder="Email" required class="bg-[#1e1e1f] border border-[#383838] rounded-xl p-3 text-sm focus:border-[#ffdb70] outline-none">
                     </div>
-                </div>
+                    <textarea name="message" rows="4" placeholder="Message" required class="w-full bg-[#1e1e1f] border border-[#383838] rounded-xl p-3 text-sm focus:border-[#ffdb70] outline-none"></textarea>
+                    <button type="submit" class="download-btn w-full md:w-max px-8">Send Message</button>
+                </form>
             </section>
+
         </main>
     </div>
 
