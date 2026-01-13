@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Prevent horizontal drift */
+        /* CRITICAL: Lock horizontal width to prevent side-scrolling */
         html, body { 
             overflow-x: hidden; 
             background-color: #121212; 
@@ -20,6 +20,7 @@
             margin: 0; 
             padding: 0;
             width: 100%;
+            scroll-behavior: smooth;
         }
 
         .page-container {
@@ -36,7 +37,7 @@
             .page-container { flex-direction: row; align-items: flex-start; }
         }
 
-        /* Sidebar Style */
+        /* Sidebar: Sticky on Desktop */
         .sidebar {
             background: #1e1e1f;
             border: 1px solid #383838;
@@ -50,7 +51,7 @@
             .sidebar { width: 300px; position: sticky; top: 40px; }
         }
 
-        /* Main Content "Sheet" View (Vertical Scrolling) */
+        /* Main Content "Sheet" View (Vertical Flow) */
         .main-content {
             flex: 1;
             background: #1e1e1f;
@@ -61,15 +62,15 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 50px; /* Space between vertical sections */
+            gap: 60px; /* Strong separation between sections */
         }
 
         .section-title { font-size: 24px; font-weight: 700; color: #fafafa; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
         .section-title::after { content: ""; position: absolute; bottom: 0; left: 0; width: 40px; height: 5px; background: #ffdb70; border-radius: 3px; }
 
-        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 15px; padding: 25px; height: 100%; }
+        .card-box { background: #2b2b2c; border: 1px solid #383838; border-radius: 15px; padding: 25px; }
 
-        /* Aarushi-Style Logo Boxes (Fixed broken images) */
+        /* Aarushi-Style Logo Presentation (CSS Text-based) */
         .company-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -81,16 +82,14 @@
             background: #2b2b2c;
             border: 1px solid #383838;
             border-radius: 12px;
-            height: 50px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 12px;
-            letter-spacing: 1px;
-            color: #ffffff;
-            opacity: 0.8;
+            transition: 0.3s;
         }
+        .company-item:hover { border-color: #ffdb70; transform: translateY(-3px); }
+        .company-name { font-weight: 800; font-size: 14px; letter-spacing: 1px; color: #fff; opacity: 0.8; }
 
         .btn-yellow {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -98,30 +97,44 @@
             padding: 10px 18px; border-radius: 12px; font-weight: 700; transition: 0.3s;
             font-size: 12px;
         }
-        .btn-yellow:hover { transform: scale(1.02); }
+        .btn-yellow:hover { transform: scale(1.02); box-shadow: 0 4px 15px rgba(255, 219, 112, 0.2); }
 
         .highlight { color: #ffdb70; font-weight: 600; }
 
-        /* Timeline */
+        /* Experience Timeline */
         .timeline-item { border-left: 2px solid #383838; padding-left: 20px; margin-bottom: 30px; position: relative; }
         .timeline-item::before {
             content: ""; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; background: #ffdb70; border-radius: 50%;
         }
+
+        /* Back to Top */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #ffdb70; color: #121212;
+            width: 45px; height: 45px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; visibility: hidden; transition: 0.3s; z-index: 100;
+        }
+        #backToTop.show { opacity: 1; visibility: visible; }
     </style>
 </head>
 <body>
 
+    <div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <div class="page-container">
         <aside class="sidebar">
             <div class="bg-[#383838] rounded-3xl w-28 h-28 mx-auto mb-6 flex items-center justify-center">
-                <i class="fas fa-terminal text-4xl text-[#ffdb70]"></i>
+                <i class="fas fa-microchip text-4xl text-[#ffdb70]"></i>
             </div>
             <h1 class="text-xl font-bold text-white mb-1">Pradeep Kapa</h1>
             <p class="bg-[#2b2b2c] text-[10px] inline-block px-3 py-1 rounded-md mb-6 uppercase tracking-widest text-gray-300">Sr. Software Engineer</p>
             
             <div class="space-y-4 text-left text-xs border-t border-[#383838] pt-6">
                 <div class="flex items-center gap-3"><i class="fas fa-envelope text-[#ffdb70]"></i> pradeep.kapa@yahoo.com</div>
-                <div class="flex items-center gap-3"><i class="fab fa-linkedin text-[#ffdb70]"></i> <a href="https://linkedin.com/in/pradeepkapa" target="_blank">linkedin.com/in/pradeepkapa</a></div>
+                <div class="flex items-center gap-3"><i class="fab fa-linkedin text-[#ffdb70]"></i> <a href="https://linkedin.com/in/pradeepkapa" target="_blank" class="hover:text-[#ffdb70]">linkedin.com/in/pradeepkapa</a></div>
                 <div class="flex items-center gap-3"><i class="fas fa-location-dot text-[#ffdb70]"></i> Florida, USA</div>
             </div>
 
@@ -135,37 +148,36 @@
             <section id="intro">
                 <h2 class="section-title">Hi Everyone!</h2>
                 <p class="leading-relaxed text-gray-300 mb-6">
-                    My name is <span class="highlight">Pradeep Kapa</span>. I am a Senior Software Engineer specializing in <span class="highlight">Cloud, DevOps, SRE, and AI/ML</span>. I focus on delivering scalable, reliable, and high-performance distributed systems.
+                    My name is <span class="highlight">Pradeep Kapa</span>, and I am a Senior Software Engineer specializing in <span class="highlight">Cloud, DevOps, SRE, and AI/ML</span>. I focus on delivering scalable, reliable, and high‑performance distributed systems.
                 </p>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="card-box">
-                        <h4 class="text-white font-bold text-sm mb-2">For Recruiters</h4>
-                        <p class="text-[11px] text-gray-400 mb-4">Interested in working together? Let's connect or schedule a call.</p>
+                        <h4 class="text-white font-bold text-sm mb-2"><i class="fas fa-briefcase text-[#ffdb70] mr-2"></i> For Recruiters</h4>
+                        <p class="text-[11px] text-gray-400 mb-4 leading-relaxed">If you believe I would be a valuable addition, please reach out via email or schedule a chat.</p>
                         <div class="flex gap-2">
                             <a href="mailto:applications.adhingra@gmail.com" class="btn-yellow text-[10px] px-3">Email Me</a>
                             <a href="#" class="bg-[#383838] text-white text-[10px] font-bold px-3 py-2 rounded-lg">Calendly</a>
                         </div>
                     </div>
                     <div class="card-box">
-                        <h4 class="text-white font-bold text-sm mb-2">Social Connections</h4>
-                        <p class="text-[11px] text-gray-400 mb-4">Looking to share journeys or connect? Reach out on any social platform.</p>
-                        <a href="https://linkedin.com/in/pradeepkapa" class="btn-yellow text-[10px] px-3">LinkedIn</a>
+                        <h4 class="text-white font-bold text-sm mb-2"><i class="fas fa-globe text-[#ffdb70] mr-2"></i> Connections</h4>
+                        <p class="text-[11px] text-gray-400 mb-4 leading-relaxed">Looking to connect, share journeys, or just be friends? Feel free to reach out on LinkedIn.</p>
+                        <a href="https://linkedin.com/in/pradeepkapa" class="btn-yellow text-[10px] px-3">Say Hello</a>
                     </div>
                 </div>
             </section>
 
             <section id="about">
                 <h2 class="section-title">About Me</h2>
-                <p class="leading-relaxed text-gray-400 mb-4">
-                    I design and operate large-scale, cloud-native systems that are secure, observable, and highly available. I bring together robust architecture, automation, and reliability practices to support mission-critical applications.
-                </p>
-                <p class="leading-relaxed text-gray-400">
-                    I am particularly passionate about integrating AI/ML into real-world products supported by solid <span class="highlight">MLOps</span> foundations. I thrive in teams that value ownership, collaboration, and continuous improvement.
-                </p>
+                <div class="space-y-4 text-gray-400 leading-relaxed">
+                    <p>I am an experienced <strong>Senior Software Engineer</strong> with a strong focus on Cloud, DevOps, SRE, and AI/ML-enabled platforms. I enjoy designing large-scale, cloud-native systems that are secure and highly available.</p>
+                    <p>My work often results in <span class="highlight">reduced downtime</span> and <span class="highlight">faster deployments</span>. I am particularly passionate about integrating AI/ML into real-world products supported by solid MLOps foundations.</p>
+                </div>
             </section>
 
             <section id="experience">
-                <h2 class="section-title">Professional Experience</h2>
+                <h2 class="section-title">Professional Journey</h2>
                 <div class="space-y-2 mb-10">
                     <div class="timeline-item">
                         <h4 class="text-white font-bold text-sm">Senior Software Engineer</h4>
@@ -185,18 +197,18 @@
                     </div>
                 </div>
 
-                <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Trusted By</h3>
+                <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Past Impact</h3>
                 <div class="company-grid">
-                    <div class="company-item">NYMBUS</div>
-                    <div class="company-item">NIELSEN</div>
-                    <div class="company-item">AIG</div>
-                    <div class="company-item">TRACE3</div>
+                    <div class="company-item"><span class="company-name">NYMBUS</span></div>
+                    <div class="company-item"><span class="company-name">NIELSEN</span></div>
+                    <div class="company-item"><span class="company-name">AIG</span></div>
+                    <div class="company-item"><span class="company-name">TRACE<span style="color:#ffdb70">3</span></span></div>
                 </div>
             </section>
 
-            <section id="certs">
+            <section id="certs" class="pb-10">
                 <h2 class="section-title">Certifications</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="card-box flex items-center gap-4">
                         <i class="fab fa-aws text-2xl text-[#ffdb70]"></i>
                         <div>
@@ -205,7 +217,7 @@
                         </div>
                     </div>
                     <div class="card-box flex items-center gap-4">
-                        <i class="fas fa-code-branch text-2xl text-[#ffdb70]"></i>
+                        <i class="fas fa-shield-halved text-2xl text-[#ffdb70]"></i>
                         <div>
                             <p class="text-white font-bold text-xs">HashiCorp Terraform</p>
                             <p class="text-gray-500 text-[9px] uppercase">Associate</p>
@@ -217,5 +229,16 @@
         </main>
     </div>
 
+    <script>
+        // Back to Top functionality
+        window.onscroll = function() {
+            const btn = document.getElementById("backToTop");
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                btn.classList.add("show");
+            } else {
+                btn.classList.remove("show");
+            }
+        };
+    </script>
 </body>
 </html>
